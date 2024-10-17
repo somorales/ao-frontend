@@ -1,11 +1,24 @@
 import "./App.css";
-import LoginPage from "./pages/LoginPage";
+import { Routes, Route } from "react-router";
+
+//pages
+import LoginPage from "./pages/auth/LoginPage";
+import HomePage from "./pages/HomePage";
+import ProductsPage from "./pages/ProductsPage";
+import PrivateAdmin from "./components/auth/PrivateAdmin";
 
 function App() {
-
   return (
     <>
-      <LoginPage />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+
+        <Route path="/admin/products" element={  <PrivateAdmin>  <ProductsPage />   </PrivateAdmin>} />
+
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* error FE routes here... */}
+      </Routes>
     </>
   );
 }
