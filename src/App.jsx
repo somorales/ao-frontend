@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router";
 import LoginPage from "./pages/auth/LoginPage";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
+import ProductDetails from "./pages/ProductDetails";
 import PrivateAdmin from "./components/auth/PrivateAdmin";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
 
         <Route path="/admin/products" element={  <PrivateAdmin>  <ProductsPage />   </PrivateAdmin>} />
+        <Route path="/admin/products/:productId" element={  <PrivateAdmin>  <ProductDetails />   </PrivateAdmin>} />
 
         <Route path="/login" element={<LoginPage />} />
 
