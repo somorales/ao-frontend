@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-export default function ProductCreate() {
+export default function EditProduct() {
+  const params = useParams();
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -15,6 +17,28 @@ export default function ProductCreate() {
   const [quantity, setQuantity] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
+
+
+  useEffect(() => {
+    service
+    .get(`/products/${params.productId}`)
+    .then((response) => {
+     setName(response.data.name)
+     SetCategory(response.data.category)
+     setDescription(response.data.description)
+     setImage(response.data.image)
+     setPrice(response.data.price)
+     setQuantity(response.data.quantity)
+     setSize(response.data.size)
+     setColor(response.data.color)
+
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+
+  }, [])
+
 
   const handelNameChange = (evento) => {
     let value = evento.target.value;
@@ -69,7 +93,7 @@ export default function ProductCreate() {
       return;
     }
 
-    const newProduct = {
+    const editProduct = {
       name: name,
       category: category,
       description: description,
@@ -81,7 +105,7 @@ export default function ProductCreate() {
     };
 
     try {
-      await service.post(`/products`, newRecommendation);
+      await service.put(`/products`, editProduct);
 
       navigate(`/admin/products`);
     } catch (error) {
@@ -89,5 +113,14 @@ export default function ProductCreate() {
     }
   };
 
-  return <div>crear formulario</div>;
+
+
+
+
+
+  return (
+    <div>
+      puedo editar un producto
+    </div>
+  )
 }
