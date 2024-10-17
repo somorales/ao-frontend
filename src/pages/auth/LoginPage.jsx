@@ -55,10 +55,9 @@ function LoginPage() {
           <img
             alt="Your Company"
             src={aoLogo}
-            className="mx-auto h-auto w-28"
+            className="mx-auto h-auto w-32"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Inicia Sesión
           </h2>
         </div>
 
