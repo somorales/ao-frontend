@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetails from "./pages/ProductDetails";
 import PrivateAdmin from "./components/auth/PrivateAdmin";
+import ProductCreate from "./pages/ProductCreate";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
 
         <Route path="/admin/products" element={  <PrivateAdmin>  <ProductsPage />   </PrivateAdmin>} />
+
+        <Route path="/admin/products/create" element={  <PrivateAdmin>  <ProductCreate />   </PrivateAdmin>} />
+
         <Route path="/admin/products/:productId" element={  <PrivateAdmin>  <ProductDetails />   </PrivateAdmin>} />
 
         <Route path="/login" element={<LoginPage />} />
