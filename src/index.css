@@ -3,5 +3,12 @@
 @tailwind utilities;
 
 .bg-ao {
-    background-color: #EFE8DB;
+  background-color: #efe8db;
+}
+
+#root {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  overflow: hidden;
 }

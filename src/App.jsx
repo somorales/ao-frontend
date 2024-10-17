@@ -10,10 +10,12 @@ import PrivateAdmin from "./components/auth/PrivateAdmin";
 import ProductCreate from "./pages/ProductCreate";
 import EditProduct from "./pages/EditProduct";
 import Signup from "./pages/auth/Signup";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <>
+      <NavBar />
       <Routes>
         
       <Route path="/login" element={<LoginPage />} />
