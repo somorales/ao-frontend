@@ -13,7 +13,8 @@ import Signup from "./pages/auth/Signup";
 import NavBar from "./components/NavBar";
 import KitsPage from "./pages/KitsPage";
 import KitDetails from "./pages/kitDetails";
-
+import EditKit from "./pages/EditKit";
+import KitCreate from "./pages/KitCreate";
 
 
 
@@ -39,7 +40,12 @@ function App() {
 
         <Route path="/admin/kits" element={  <PrivateAdmin>  <KitsPage />   </PrivateAdmin>} />
 
+        <Route path="/admin/kits/create" element={  <PrivateAdmin>  <KitCreate />   </PrivateAdmin>} />
+
         <Route path="/admin/kits/:kitId" element={  <PrivateAdmin>  <KitDetails />   </PrivateAdmin>} />
+
+        <Route path="/admin/kits/:kitId/edit" element={  <PrivateAdmin>  <EditKit />   </PrivateAdmin>} />
+
 
        
 

@@ -134,7 +134,7 @@ export default function ProductCreate() {
 
           <div className="lg:col-span-2 lg:pr-8">
               <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                Editar Producto
+                Crear Producto
               </h1>
             </div>
 

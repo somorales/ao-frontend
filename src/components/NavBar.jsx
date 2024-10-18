@@ -72,7 +72,7 @@ export default function NavBar() {
                 </MenuItem>
                 <MenuItem>
                   <Link
-                    to={"/admin/products/create"}
+                    to={"/admin/kits/create"}
                     className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                   >
                     Combo
