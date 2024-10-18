@@ -135,7 +135,7 @@ export default function EditProduct() {
               className="h-full w-full object-cover object-center rounded-lg"
             />
           </div>
-          <form onSubmit={handleSubmit} method="POST" className="space-y-6 p-6">
+          <form onSubmit={handleSubmit} method="PUT" className="space-y-6 p-6">
 
           <div className="lg:col-span-2 lg:pr-8">
               <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">

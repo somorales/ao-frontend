@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
+import { Radio, RadioGroup } from "@headlessui/react";
 
 const colors = [
   {
@@ -43,7 +44,6 @@ export default function ProductCreate() {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
-  const [category, SetCategory] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [price, setPrice] = useState("");
@@ -56,10 +56,6 @@ export default function ProductCreate() {
     setName(value);
   };
 
-  const handleCatedoryChange = (evento) => {
-    let value = evento.target.value;
-    SetCategory(value);
-  };
 
   const handleDescriptionChange = (evento) => {
     let value = evento.target.value;
@@ -93,12 +89,12 @@ export default function ProductCreate() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (
       name === "" ||
-      category === "" ||
       description === "" ||
      // image === "" ||
-      price == "" ||
+      price === "" ||
       quantity === ""
     ) {
       return;
@@ -106,9 +102,9 @@ export default function ProductCreate() {
 
     const newProduct = {
       name: name,
-      category: category,
       description: description,
-      image: image,
+      //image: image,
+      image:"https://ethic.es/wp-content/uploads/2023/03/imagen.jpg",
       price: price,
       quantity: quantity,
       size: size,
@@ -130,7 +126,6 @@ export default function ProductCreate() {
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="aspect-h-4 aspect-w-3">
             <img
-              alt={name}
               src={image}
               className="h-full w-full object-cover object-center rounded-lg"
             />
@@ -231,7 +226,7 @@ export default function ProductCreate() {
               </div>
             </div>
 
-            {color && (
+        
               <div>
                 {/* Ejemplo de referencia https://tailwindui.com/components/ecommerce/components/product-overviews */}
                 <h3 className="text-sm font-medium text-gray-900">Color</h3>
@@ -258,10 +253,10 @@ export default function ProductCreate() {
                   </RadioGroup>
                 </fieldset>
               </div>
-            )}
+      
 
             {/* Sizes */}
-            {size && (
+            
               <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-medium text-gray-900">Tamaño</h3>
@@ -287,7 +282,7 @@ export default function ProductCreate() {
                   </RadioGroup>
                 </fieldset>
               </div>
-            )}
+         
 
             <button
               type="submit"

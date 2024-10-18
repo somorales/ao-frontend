@@ -11,6 +11,11 @@ import ProductCreate from "./pages/ProductCreate";
 import EditProduct from "./pages/EditProduct";
 import Signup from "./pages/auth/Signup";
 import NavBar from "./components/NavBar";
+import KitsPage from "./pages/KitsPage";
+import KitDetails from "./pages/kitDetails";
+
+
+
 
 function App() {
   return (
@@ -31,6 +36,10 @@ function App() {
         <Route path="/admin/products/:productId" element={  <PrivateAdmin>  <ProductDetails />   </PrivateAdmin>} />
 
         <Route path="/admin/products/:productId/edit" element={  <PrivateAdmin>  <EditProduct />   </PrivateAdmin>} />
+
+        <Route path="/admin/kits" element={  <PrivateAdmin>  <KitsPage />   </PrivateAdmin>} />
+
+        <Route path="/admin/kits/:kitId" element={  <PrivateAdmin>  <KitDetails />   </PrivateAdmin>} />
 
        
 
