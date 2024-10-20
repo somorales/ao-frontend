@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
+import { PhotoIcon } from "@heroicons/react/24/solid";
 
 const productoSelectedClass = 'ring-2 ring-indigo-600 rounded-md ring-offset-1';
 
@@ -17,6 +18,7 @@ export default function KitCreate() {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
     service
@@ -39,9 +41,32 @@ export default function KitCreate() {
     setDescription(value);
   };
 
-  const handleImageChange = (evento) => {
-    let value = evento.target.value;
-    setImage(value);
+
+  const handleImageChange = async (evento) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    if (!evento.target.files[0]) {
+      // to prevent accidentally clicking the choose file button and not selecting a file
+      return;
+    }
+
+    setIsUploading(true); // to start the loading animation
+
+    const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
+    uploadData.append("image", evento.target.files[0]);
+    //                   |
+    //     this name needs to match the name used in the middleware in the backend => uploader.single("image")
+
+    try {
+      const response = await service.post("/upload", uploadData);
+      setImage(response.data.imageUrl);
+      //                          |
+      //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
+
+      setIsUploading(false); // to stop the loading animation
+    } catch (error) {
+      navigate("/error");
+    }
   };
 
   const handlePriceChange = (evento) => {
@@ -77,7 +102,7 @@ export default function KitCreate() {
     if (
       name === "" ||
       description === "" ||
-      // image === "" ||
+      image === "" ||
       price === "" ||
       quantity === ""
     ) {
@@ -87,8 +112,7 @@ export default function KitCreate() {
     const newKit = {
       name: name,
       description: description,
-      //image: image,
-      image: "https://ethic.es/wp-content/uploads/2023/03/imagen.jpg",
+      image: image,
       price: price,
       quantity: quantity,
       products: selectedProducts,
@@ -107,11 +131,20 @@ export default function KitCreate() {
     <div className="bg-white">
       <div className="lg:py-6">
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-          <div className="aspect-h-4 aspect-w-3">
-            <img
-              src={image}
-              className="h-full w-full object-cover object-center rounded-lg"
-            />
+        <div className="aspect-h-4 aspect-w-3">
+            {image && (
+              <img
+                src={image}
+                className="h-full w-full object-cover object-center rounded-lg"
+              />
+            )}
+            <div className="h-full w-full object-cover object-center rounded-lg border lg:p-6">
+              {isUploading ? (
+                <div>
+                  <h2>subiendo imagen...</h2>
+                </div>
+              ) : null}
+            </div>
           </div>
           <form onSubmit={handleSubmit} method="POST" className="space-y-6 p-6">
             <div className="lg:col-span-2 lg:pr-8">
@@ -163,6 +196,44 @@ export default function KitCreate() {
                 ></textarea>
               </div>
             </div>
+
+            <div className="col-span-full">
+              <label
+                htmlFor="cover-photo"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Imagen del producto
+              </label>
+              <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                <div className="text-center">
+                  <PhotoIcon
+                    aria-hidden="true"
+                    className="mx-auto h-12 w-12 text-gray-300"
+                  />
+                  <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                    <label
+                      htmlFor="file-upload"
+                      className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                    >
+                      <span>Subir imagen</span>
+                      <input
+                        onChange={handleImageChange}
+                        id="file-upload"
+                        name="file-upload"
+                        type="file"
+                        required
+                        className="sr-only"
+                      />
+                    </label>
+                    <p className="pl-1">o arrastra y suelta</p>
+                  </div>
+                  <p className="text-xs leading-5 text-gray-600">
+                    PNG, JPG, hasta 10MB
+                  </p>
+                </div>
+              </div>
+            </div>
+
 
             <div>
               <div className="flex items-center justify-between">

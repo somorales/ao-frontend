@@ -114,7 +114,7 @@ export default function ProductCreate() {
     if (
       name === "" ||
       description === "" ||
-      // image === "" ||
+      image === "" ||
       price === "" ||
       quantity === ""
     ) {
