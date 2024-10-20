@@ -5,6 +5,8 @@ import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
+const productoSelectedClass = "ring-2 ring-indigo-600 rounded-md ring-offset-1";
+
 export default function EditKit() {
   const params = useParams();
   const navigate = useNavigate();
@@ -16,7 +18,7 @@ export default function EditKit() {
   const [image, setImage] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [product, setProduct] = useState("");
+  const [selectedProducts, setSelectedProducts] = useState([]);
 
   useEffect(() => {
     service
@@ -38,7 +40,7 @@ export default function EditKit() {
         setImage(response.data.image);
         setPrice(response.data.price);
         setQuantity(response.data.quantity);
-        setProduct(response.data.product);
+        setSelectedProducts(response.data.products);
       })
       .catch((err) => {
         console.log(err);
@@ -70,9 +72,21 @@ export default function EditKit() {
     setQuantity(value);
   };
 
-  const handleProductChange = (evento) => {
-    let value = evento.target.value;
-    setProduct(value);
+  const handleProductClick = (producto) => {
+    const copy = [...selectedProducts];
+    const productoExiste = copy.includes(producto._id);
+
+    if (productoExiste) {
+      // eliminar
+      const index = copy.indexOf(producto._id);
+      copy.splice(index, 1);
+    } else {
+      // agregar
+      copy.push(producto._id);
+    }
+
+    // actualizar productos seleccionados
+    setSelectedProducts(copy);
   };
 
   const handleSubmit = async (e) => {
@@ -94,7 +108,7 @@ export default function EditKit() {
       image: "https://ethic.es/wp-content/uploads/2023/03/imagen.jpg",
       price: price,
       quantity: quantity,
-      product: product,
+      products: selectedProducts,
     };
 
     try {
@@ -220,12 +234,20 @@ export default function EditKit() {
                     <p className="text-base text-gray-900">
                       {eachProduct.name}
                     </p>
-                    <img src={eachProduct.image} alt="image" className="h-40" />
+                    <img
+                      src={eachProduct.image}
+                      alt="image"
+                      className={`h-40 hover:cursor-pointer ${
+                        selectedProducts.includes(eachProduct._id)
+                          ? productoSelectedClass
+                          : ""
+                      }`}
+                      onClick={(event) => handleProductClick(eachProduct)}
+                    />
                   </div>
                 ))}
               </div>
             </div>
-
 
             <button
               type="submit"
