@@ -4,6 +4,7 @@ import {
   ShoppingCartIcon,
   UserCircleIcon,
   PlusIcon,
+  HeartIcon
 } from "@heroicons/react/24/outline";
 import aoLogo from "../assets/images/ao-logo.png";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
@@ -90,15 +91,21 @@ export default function NavBar() {
                 className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
               />
             </button>
+
+            <Link
+            to={"/favorites"}>
             <button
               type="button"
               className="-my-1 ml-auto flex h-8 w-8 items-center justify-center rounded-lg lg:ml-8"
             >
-              <ShoppingCartIcon
+              < HeartIcon
                 aria-hidden="true"
                 className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
               />
             </button>
+
+            </Link>
+
           </div>
         </div>
       </nav>

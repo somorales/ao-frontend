@@ -17,6 +17,7 @@ import EditKit from "./pages/EditKit";
 import KitCreate from "./pages/KitCreate";
 import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
+import FavoritesPage from "./pages/FavoritesPage";
 
 
 
@@ -28,9 +29,11 @@ function App() {
       <NavBar />
       <Routes>
 
-      <Route path="/about" element={<AboutPage />} />
+       <Route path="/about" element={<AboutPage />} />
 
-      <Route path="/login" element={<LoginPage />} />
+       <Route path="/favorites" element={<FavoritesPage />} />
+
+       <Route path="/login" element={<LoginPage />} />
         
         <Route path="/signup" element={<Signup />} />
 
@@ -56,9 +59,16 @@ function App() {
 
         <Route path="/kits/:kitId" element={  <KitDetails /> } />
 
+        
+
+
+
+
+      
+
        
 
-        {/* error FE routes here... */}
+        
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

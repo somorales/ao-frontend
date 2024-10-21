@@ -2,9 +2,12 @@ import React from 'react'
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import service from "../services/config.js";
+import { useNavigate } from "react-router-dom";
 
 
 export default function KitDetails() {
+
+  const navigate = useNavigate();
 
     const params = useParams();
 
@@ -25,6 +28,18 @@ export default function KitDetails() {
     if (kit === null) {
       return <h3>...loading</h3>;
     }
+
+    const handleDelete = (event) => {
+      service
+        .delete(`/kits/${params.kitId}`)
+        
+        .then((response) => {
+          navigate(`/admin/kits`);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
 
 
     return (
@@ -92,6 +107,9 @@ export default function KitDetails() {
                     Editar
                   </button>
                 </Link>
+                <button onClick={handleDelete} className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    Borrar
+                  </button>
               </div>
             </div>
           </div>
