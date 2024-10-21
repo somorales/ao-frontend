@@ -15,6 +15,10 @@ import KitsPage from "./pages/KitsPage";
 import KitDetails from "./pages/kitDetails";
 import EditKit from "./pages/EditKit";
 import KitCreate from "./pages/KitCreate";
+import AboutPage from "./pages/AboutPage";
+import ErrorPage from "./pages/ErrorPage";
+
+
 
 
 
@@ -23,7 +27,9 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        
+
+      <Route path="/about" element={<AboutPage />} />
+
       <Route path="/login" element={<LoginPage />} />
         
         <Route path="/signup" element={<Signup />} />
@@ -46,10 +52,14 @@ function App() {
 
         <Route path="/admin/kits/:kitId/edit" element={  <PrivateAdmin>  <EditKit />   </PrivateAdmin>} />
 
+        <Route path="/products/:productId" element={  <ProductDetails /> } />
+
+        <Route path="/kits/:kitId" element={  <KitDetails /> } />
 
        
 
         {/* error FE routes here... */}
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );
