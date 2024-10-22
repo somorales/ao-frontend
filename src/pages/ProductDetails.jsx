@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import service from "../services/config.js";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 const colors = [
   {
@@ -45,6 +46,8 @@ export default function ProductDetails() {
   const navigate = useNavigate();
 
   const [product, setProduct] = useState(null);
+
+  const { isAdmin } = useContext(AuthContext);
 
   useEffect(() => {
     service
@@ -114,14 +117,20 @@ export default function ProductDetails() {
               </div>
             </div>
 
-            <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
-              <div>
-                <h3 className="text-sm font-medium text-gray-900">Unidades</h3>
-                <div className="space-y-6">
-                  <p className="text-base text-gray-900">{product.quantity}</p>
+            {isAdmin && (
+              <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
+                <div>
+                  <h3 className="text-sm font-medium text-gray-900">
+                    Unidades
+                  </h3>
+                  <div className="space-y-6">
+                    <p className="text-base text-gray-900">
+                      {product.quantity}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {product.color && (
               <div>
@@ -178,23 +187,27 @@ export default function ProductDetails() {
                 </fieldset>
               </div>
             )}
+            {isAdmin && (
+              <Link to={`/admin/products/${product._id}/edit`}>
+                <button className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                  Editar
+                </button>
+              </Link>
+            )}
 
-            <Link to={`/admin/products/${product._id}/edit`}>
-              <button className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                Editar
+
+            {!isAdmin && (
+              <button
+                onClick={handleAdd}
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              >
+                favoritos
+                <HeartIcon
+                  aria-hidden="true"
+                  className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                />
               </button>
-            </Link>
-
-            <button
-              onClick={handleAdd}
-              className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            >
-              favoritos
-              <HeartIcon
-                aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-              />
-            </button>
+            )}
           </div>
         </div>
       </div>

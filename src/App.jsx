@@ -18,6 +18,7 @@ import KitCreate from "./pages/KitCreate";
 import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import FavoritesPage from "./pages/FavoritesPage";
+import PrivateUser from "./components/auth/PrivateUser";
 
 
 
@@ -31,7 +32,7 @@ function App() {
 
        <Route path="/about" element={<AboutPage />} />
 
-       <Route path="/favorites" element={<FavoritesPage />} />
+       <Route path="/favorites" element={<PrivateUser> <FavoritesPage /> </PrivateUser>} />
 
        <Route path="/login" element={<LoginPage />} />
         
@@ -58,16 +59,6 @@ function App() {
         <Route path="/products/:productId" element={  <ProductDetails /> } />
 
         <Route path="/kits/:kitId" element={  <KitDetails /> } />
-
-        
-
-
-
-
-      
-
-       
-
         
         <Route path="*" element={<ErrorPage />} />
       </Routes>
