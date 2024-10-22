@@ -3,34 +3,43 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import service from "../services/config.js";
 import SearchForm from "../components/SearchForm.jsx";
+import Loading from "../components/Loading.jsx";
 
 export default function ProductsPage() {
   const [allProducts, setAllProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     service
       .get(`/products`)
       .then((response) => {
         setAllProducts(response.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }, []);
 
   const handleSearchProduct = (text) => {
+    setIsLoading(true);
     service
       .get(`/products?name=${text}`)
       .then((response) => {
         setAllProducts(response.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   };
 
   return (
     <div className="bg-white">
+       <Loading isLoading={isLoading}>
       <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 className="text-4xl	font-bold pb-4">Listado de Productos</h1>
         <SearchForm
@@ -70,6 +79,7 @@ export default function ProductsPage() {
           ))}
         </div>
       </div>
+      </Loading>
     </div>
   );
 }

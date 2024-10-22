@@ -5,6 +5,7 @@ import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { HeartIcon } from "@heroicons/react/24/outline";
+import Loading from "../components/Loading.jsx";
 
 export default function KitDetails() {
   const navigate = useNavigate();
@@ -15,15 +16,20 @@ export default function KitDetails() {
 
   const { isLoggedIn, isAdmin } = useContext(AuthContext)
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
+    setIsLoading(true);
     service
       .get(`/kits/${params.kitId}/details`)
       .then((response) => {
         console.log(response.data);
         setKit(response.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }, []);
 
@@ -66,6 +72,7 @@ export default function KitDetails() {
 
   return (
     <div className="bg-white">
+        <Loading isLoading={isLoading}>
       <div className="lg:py-6">
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="aspect-h-4 aspect-w-3">
@@ -156,6 +163,7 @@ export default function KitDetails() {
           </div>
         </div>
       </div>
+      </Loading>
     </div>
   );
 }

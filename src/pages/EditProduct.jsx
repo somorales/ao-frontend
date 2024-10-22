@@ -5,7 +5,8 @@ import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Radio, RadioGroup } from "@headlessui/react";
-import { PhotoIcon } from "@heroicons/react/24/solid";
+import { PhotoIcon } from "@heroicons/react/24/solid"
+import Loading from "../components/Loading.jsx";
 
 const colors = [
   {
@@ -52,8 +53,11 @@ export default function EditProduct() {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [isUploading, setIsUploading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    
+    setIsLoading(true);
     service
       .get(`/products/${params.productId}`)
       .then((response) => {
@@ -64,6 +68,7 @@ export default function EditProduct() {
         setQuantity(response.data.quantity);
         setSize(response.data.size);
         setColor(response.data.color);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -151,6 +156,7 @@ export default function EditProduct() {
   return (
     <div className="bg-white">
       <div className="lg:py-6">
+      <Loading isLoading={isLoading}>
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="aspect-h-4 aspect-w-3">
             {image && (
@@ -372,6 +378,7 @@ export default function EditProduct() {
             </Link>
           </form>
         </div>
+        </Loading>
       </div>
     </div>
   );

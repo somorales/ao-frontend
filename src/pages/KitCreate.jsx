@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
 import { PhotoIcon } from "@heroicons/react/24/solid";
+import Loading from "../components/Loading.jsx";
 
 const productoSelectedClass = 'ring-2 ring-indigo-600 rounded-md ring-offset-1';
 
@@ -19,15 +20,19 @@ export default function KitCreate() {
   const [quantity, setQuantity] = useState("");
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [isUploading, setIsUploading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     service
       .get(`/products`)
       .then((response) => {
         setAllProducts(response.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }, []);
 
@@ -129,6 +134,7 @@ export default function KitCreate() {
 
   return (
     <div className="bg-white">
+       <Loading isLoading={isLoading}>
       <div className="lg:py-6">
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
         <div className="aspect-h-4 aspect-w-3">
@@ -316,6 +322,7 @@ export default function KitCreate() {
           </form>
         </div>
       </div>
+      </Loading>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { PhotoIcon } from "@heroicons/react/24/solid";
 
+
 const colors = [
   {
     name: "Blanco",
@@ -50,6 +51,7 @@ export default function ProductCreate() {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [isUploading, setIsUploading] = useState(false);
+  
 
   const handleNameChange = (evento) => {
     let value = evento.target.value;

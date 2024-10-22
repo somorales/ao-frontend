@@ -6,6 +6,7 @@ import { Radio, RadioGroup } from "@headlessui/react";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import Loading from "../components/Loading.jsx";
 
 const colors = [
   {
@@ -49,15 +50,20 @@ export default function ProductDetails() {
 
   const {isLoggedIn, isAdmin } = useContext(AuthContext);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
+    setIsLoading(true);
+
     service
       .get(`/products/${params.productId}`)
       .then((response) => {
-        console.log(response.data);
         setProduct(response.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }, []);
 
@@ -87,6 +93,7 @@ export default function ProductDetails() {
 
   return (
     <div className="bg-white">
+       <Loading isLoading={isLoading}>
       <div className="lg:py-6">
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="aspect-h-4 aspect-w-3">
@@ -214,6 +221,7 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
+      </Loading>
     </div>
   );
 }

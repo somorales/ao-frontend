@@ -5,20 +5,27 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import service from "../services/config.js";
 import { HeartIcon } from "@heroicons/react/24/solid";
+import Loading from "../components/Loading.jsx";
 
 export default function FavoritesPage() {
   const navigate = useNavigate();
 
   const [allFavorites, setAllFavorites] = useState({ products: [], kits: [] });
+  const [isLoading, setIsLoading] = useState(false);
+  
+
 
   useEffect(() => {
+    setIsLoading(true);
     service
       .get(`/auth/user/favorites`)
       .then((response) => {
         setAllFavorites(response.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }, []);
 
@@ -35,6 +42,7 @@ export default function FavoritesPage() {
 
   return (
     <div className="bg-white">
+        <Loading isLoading={isLoading}>
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="lg:col-span-2 lg:pr-8">
           <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
@@ -103,6 +111,7 @@ export default function FavoritesPage() {
           ))}
         </div>
       </div>
+      </Loading>
     </div>
   );
 }
