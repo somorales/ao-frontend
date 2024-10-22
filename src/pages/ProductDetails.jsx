@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import service from "../services/config.js";
 import { Radio, RadioGroup } from "@headlessui/react";
+import { HeartIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 
 const colors = [
   {
@@ -40,6 +42,8 @@ const sizes = [
 export default function ProductDetails() {
   const params = useParams();
 
+  const navigate = useNavigate();
+
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -57,6 +61,22 @@ export default function ProductDetails() {
   if (product === null) {
     return <h3>...loading</h3>;
   }
+
+  const handleAdd = async (e) => {
+    e.preventDefault();
+
+    const productFavorite = {
+      productId: params.productId,
+    };
+
+    try {
+      await service.post(`/favorites`, productFavorite);
+
+      navigate(`/favorites`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="bg-white">
@@ -164,6 +184,17 @@ export default function ProductDetails() {
                 Editar
               </button>
             </Link>
+
+            <button
+              onClick={handleAdd}
+              className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+              favoritos
+              <HeartIcon
+                aria-hidden="true"
+                className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+              />
+            </button>
           </div>
         </div>
       </div>
