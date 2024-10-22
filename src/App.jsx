@@ -12,7 +12,7 @@ import EditProduct from "./pages/EditProduct";
 import Signup from "./pages/auth/Signup";
 import NavBar from "./components/NavBar";
 import KitsPage from "./pages/KitsPage";
-import KitDetails from "./pages/kitDetails";
+import KitDetails from "./pages/KitDetails";
 import EditKit from "./pages/EditKit";
 import KitCreate from "./pages/KitCreate";
 import AboutPage from "./pages/AboutPage";
