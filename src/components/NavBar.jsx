@@ -13,16 +13,23 @@ import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
-  const { isLoggedIn, isAdmin } = useContext(AuthContext)
+  const { isLoggedIn, isAdmin, authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleClick = async (e) => {
     e.preventDefault();
 
-    if(!isLoggedIn){
+    if (!isLoggedIn) {
       navigate("/login");
     }
-  }
+  };
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    localStorage.removeItem("authToken");
+    await authenticateUser();
+    navigate("/");
+  };
 
   return (
     <header className="relative z-50 w-full flex-none text-sm font-semibold leading-6 text-slate-900">
@@ -48,6 +55,14 @@ export default function NavBar() {
                 <a className="ml-8" href="/admin/kits">
                   Combos
                 </a>
+              </>
+            )}
+          </div>
+
+          <div className="ml-auto hidden lg:flex lg:items-center">
+            {!isAdmin && (
+              <>
+                <a href="/about">Sobre AO</a>
               </>
             )}
           </div>
@@ -99,16 +114,51 @@ export default function NavBar() {
               </Menu>
             )}
 
-            <button
-              type="button"
-              className="-my-1 ml-auto flex h-8 w-8 items-center justify-center rounded-lg lg:ml-8"
-              onClick={handleClick}
-            >
-              <UserCircleIcon
-                aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-              />
-            </button>
+            {!isLoggedIn && (
+              <button
+                type="button"
+                className="-my-1 ml-auto flex h-8 w-8 items-center justify-center rounded-lg lg:ml-8"
+                onClick={handleClick}
+              >
+                <UserCircleIcon
+                  aria-hidden="true"
+                  className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                />
+              </button>
+            )}
+
+            {isLoggedIn && (
+              <Menu as="div" className="relative ml-3">
+                <div>
+                  <MenuButton className="-my-1 ml-auto flex h-8 w-8 items-center justify-center rounded-lg lg:ml-8">
+                    <span className="absolute -inset-1.5" />
+                    <span className="sr-only">Open user menu</span>
+                    <UserCircleIcon className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" />
+                  </MenuButton>
+                </div>
+                <MenuItems
+                  transition
+                  className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                >
+                  <MenuItem>
+                    <Link
+                      to={"/admin/products/create"}
+                      className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                    >
+                      Ver Perfil
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <button
+                      onClick={handleLogout}
+                      className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                    >
+                      Cerrar Sesión
+                    </button>
+                  </MenuItem>
+                </MenuItems>
+              </Menu>
+            )}
 
             {!isAdmin && (
               <Link to={"/favorites"}>
