@@ -47,7 +47,7 @@ export default function ProductDetails() {
 
   const [product, setProduct] = useState(null);
 
-  const { isAdmin } = useContext(AuthContext);
+  const {isLoggedIn, isAdmin } = useContext(AuthContext);
 
   useEffect(() => {
     service
@@ -67,6 +67,10 @@ export default function ProductDetails() {
 
   const handleAdd = async (e) => {
     e.preventDefault();
+
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
 
     const productFavorite = {
       productId: params.productId,
@@ -194,7 +198,6 @@ export default function ProductDetails() {
                 </button>
               </Link>
             )}
-
 
             {!isAdmin && (
               <button

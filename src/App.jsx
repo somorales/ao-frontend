@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router";
+import {  useLocation } from 'react-router-dom'
 
 //pages
 import LoginPage from "./pages/auth/LoginPage";
@@ -24,10 +25,15 @@ import PrivateUser from "./components/auth/PrivateUser";
 
 
 
+
 function App() {
+  const location = useLocation();
+  console.log(location.pathname) 
+
   return (
     <>
-      <NavBar />
+      {(location.pathname !== `/signup` && location.pathname !== `/login`) && <NavBar />}
+
       <Routes>
 
        <Route path="/about" element={<AboutPage />} />

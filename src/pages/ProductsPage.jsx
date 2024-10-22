@@ -1,7 +1,8 @@
-import React from 'react'
-import { Link} from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import service from "../services/config.js";
+import SearchForm from "../components/SearchForm.jsx";
 
 export default function ProductsPage() {
   const [allProducts, setAllProducts] = useState([]);
@@ -17,10 +18,29 @@ export default function ProductsPage() {
       });
   }, []);
 
+  const handleSearchProduct = (text) => {
+    service
+      .get(`/products?name=${text}`)
+      .then((response) => {
+        setAllProducts(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h1 className="text-4xl	font-bold pb-4">Listado de Productos</h1>
+        <SearchForm
+          placeholder="Buscar productos..."
+          onSearch={handleSearchProduct}
+        />
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {allProducts.length === 0 && (
+            <p>No se encuentran productos.</p>
+          )}
           {allProducts.map((product) => (
             <Link key={product._id} to={`/admin/products/${product._id}`}>
               <div className="group relative">
@@ -34,13 +54,8 @@ export default function ProductsPage() {
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      <Link
-                        key={product.id}
-                        to={`/admin/products/${product._id}`}
-                      >
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {product.name}
-                      </Link>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {product.name}
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">
                       {product.quantity} unidades

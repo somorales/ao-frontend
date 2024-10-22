@@ -1,16 +1,15 @@
 import aoLogo from "../../assets/images/ao-logo.png";
 import service from "../../services/config";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
@@ -20,27 +19,25 @@ function Signup() {
     e.preventDefault();
 
     try {
-
       const newUser = {
         email,
         name,
-        password
-      }
-      
-      await service.post("/auth/signup", newUser)
+        password,
+      };
 
-      navigate("/login")
+      await service.post("/auth/signup", newUser);
 
+      navigate("/login");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       if (error.response.status === 400) {
-        setErrorMessage(error.response.data.message)
+        setErrorMessage(error.response.data.message);
       } else {
         //! aqui deberia haber redirección a /error
       }
     }
   };
- 
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -50,8 +47,7 @@ function Signup() {
             src={aoLogo}
             className="mx-auto h-auto w-32"
           />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          </h2>
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"></h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -66,7 +62,7 @@ function Signup() {
                 </label>
               </div>
               <div className="mt-2">
-                <input 
+                <input
                   onChange={handleEmailChange}
                   id="email"
                   name="email"
@@ -78,7 +74,6 @@ function Signup() {
               </div>
             </div>
 
-
             <div>
               <div className="flex items-center justify-between">
                 <label
@@ -89,7 +84,7 @@ function Signup() {
                 </label>
               </div>
               <div className="mt-2">
-                <input 
+                <input
                   onChange={handleNameChange}
                   id="name"
                   name="name"
@@ -112,7 +107,7 @@ function Signup() {
               </div>
               <div className="mt-2">
                 <input
-                onChange={handlePasswordChange}
+                  onChange={handlePasswordChange}
                   id="password"
                   name="password"
                   type="password"
@@ -128,26 +123,24 @@ function Signup() {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Iniciar sesión
+                Registrarme
               </button>
             </div>
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            No tienes cuenta?{" "}
-            <a
-              href="#"
+            Ya tienes cuenta?{" "}
+            <Link
+              to={`/login`}
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-              Regístrate
-            </a>
+              Inicia Sesión
+            </Link>
           </p>
         </div>
       </div>
     </>
   );
-
 }
-
 
 export default Signup;

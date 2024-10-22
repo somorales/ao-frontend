@@ -242,7 +242,6 @@ export default function EditProduct() {
                         id="file-upload"
                         name="file-upload"
                         type="file"
-                        required
                         className="sr-only"
                       />
                     </label>

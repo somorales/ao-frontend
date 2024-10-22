@@ -13,7 +13,7 @@ export default function KitDetails() {
 
   const [kit, setKit] = useState(null);
 
-  const { isAdmin } = useContext(AuthContext);
+  const { isLoggedIn, isAdmin } = useContext(AuthContext)
 
   useEffect(() => {
     service
@@ -46,6 +46,10 @@ export default function KitDetails() {
   const handleAdd = async (e) => {
     e.preventDefault();
 
+    if(!isLoggedIn){
+      navigate("/login");
+    }
+
     const kitFavorite = {
       kitId: params.kitId,
     };
@@ -58,6 +62,7 @@ export default function KitDetails() {
       console.log(error);
     }
   };
+
 
   return (
     <div className="bg-white">

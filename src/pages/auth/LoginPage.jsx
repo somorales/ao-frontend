@@ -3,6 +3,7 @@ import service from "../../services/config.js";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context.jsx";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -119,12 +120,13 @@ function LoginPage() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             No tienes cuenta?{" "}
-            <a
-              href="#"
+
+            <Link
+            to ={`/signup`}
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Regístrate
-            </a>
+            </Link>
           </p>
         </div>
       </div>

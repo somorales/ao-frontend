@@ -9,10 +9,20 @@ import aoLogo from "../assets/images/ao-logo.png";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
-  const { isAdmin } = useContext(AuthContext);
+  const { isLoggedIn, isAdmin } = useContext(AuthContext)
+  const navigate = useNavigate();
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    if(!isLoggedIn){
+      navigate("/login");
+    }
+  }
 
   return (
     <header className="relative z-50 w-full flex-none text-sm font-semibold leading-6 text-slate-900">
@@ -92,6 +102,7 @@ export default function NavBar() {
             <button
               type="button"
               className="-my-1 ml-auto flex h-8 w-8 items-center justify-center rounded-lg lg:ml-8"
+              onClick={handleClick}
             >
               <UserCircleIcon
                 aria-hidden="true"
