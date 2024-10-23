@@ -8,7 +8,6 @@ import { PhotoIcon } from "@heroicons/react/24/solid";
 import { ToastContext } from "../context/toast.context.jsx";
 import { useContext } from "react";
 
-
 const colors = [
   {
     name: "Blanco",
@@ -54,7 +53,6 @@ export default function ProductCreate() {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [isUploading, setIsUploading] = useState(false);
-  
 
   const handleNameChange = (evento) => {
     let value = evento.target.value;
@@ -142,7 +140,7 @@ export default function ProductCreate() {
       navigate(`/admin/products`);
     } catch (error) {
       console.log(error);
-      setErrorMessage("Error de comunicación con el servidor.")
+      setErrorMessage("Error de comunicación con el servidor.");
     }
   };
 
@@ -191,7 +189,7 @@ export default function ProductCreate() {
                   type="text"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] sm:text-sm sm:leading-6"
-                  ></textarea>
+                ></textarea>
               </div>
             </div>
 
@@ -207,7 +205,7 @@ export default function ProductCreate() {
               <div className="mt-2">
                 <textarea
                   onChange={handleDescriptionChange}
-                   placeholder="Descripción del producto"
+                  placeholder="Descripción del producto"
                   value={description}
                   id="description"
                   name="description"
@@ -246,7 +244,6 @@ export default function ProductCreate() {
                         className="sr-only"
                       />
                     </label>
-        
                   </div>
                   <p className="text-xs leading-5 text-gray-600">
                     PNG, JPG, hasta 10MB
@@ -302,7 +299,9 @@ export default function ProductCreate() {
             </div>
 
             <div>
-              <h3 className="text-sm font-medium text-[#000000]">Color (Opcional)</h3>
+              <h3 className="text-sm font-medium text-[#000000]">
+                Color (Opcional)
+              </h3>
               <fieldset aria-label="Choose a color" className="mt-4">
                 <RadioGroup
                   value={color}
@@ -331,7 +330,9 @@ export default function ProductCreate() {
 
             <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-medium text-[#000000]">Tamaño (Opcional)</h3>
+                <h3 className="text-sm font-medium text-[#000000]">
+                  Tamaño (Opcional)
+                </h3>
               </div>
 
               <fieldset aria-label="Choose a size" className="mt-4">
@@ -346,7 +347,7 @@ export default function ProductCreate() {
                       value={eachSize.name}
                       className={`${
                         eachSize.name === size ? eachSize.selectedClass : ""
-                      } group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none data-[focus]:ring-2 data-[focus]:ring-indigo-500 sm:flex-1 sm:py-6`}
+                      } group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase hover:bg-[#efe8db] focus:outline-none data-[focus]:ring-2  sm:flex-1 sm:py-6`}
                     >
                       <span>{eachSize.name}</span>
                     </Radio>
@@ -362,11 +363,12 @@ export default function ProductCreate() {
               Crear Producto
             </button>
 
-            <Link to={`/admin/products`}>
-              <button className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#efe8db]  px-8 py-3 text-base font-medium text-[#000000] hover:bg-[#d2ccb4] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                Cancelar
-              </button>
-            </Link>
+            <button
+              onClick={() => navigate("/admin/products")}
+              className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#efe8db] px-8 py-3 text-base font-medium text-[#000000] hover:bg-[#d2ccb4] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
+            >
+              Cancelar
+            </button>
           </form>
         </div>
       </div>
