@@ -45,7 +45,7 @@ export default function FavoritesPage() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-ao">
         <Loading isLoading={isLoading}>
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="lg:col-span-2 lg:pr-8">

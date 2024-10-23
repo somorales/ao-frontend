@@ -13,7 +13,7 @@ import { ToastContext } from "../context/toast.context.jsx";
 const colors = [
   {
     name: "Blanco",
-    class: "bg-white",
+    class: "bg-ao",
     selectedClass: "ring-gray-400 ring-2 ring ring-offset-2",
   },
   {
@@ -98,7 +98,7 @@ export default function ProductDetails() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-ao">
        <Loading isLoading={isLoading}>
       <div className="lg:py-6">
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">

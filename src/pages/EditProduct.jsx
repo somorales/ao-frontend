@@ -13,7 +13,7 @@ import { useContext } from "react";
 const colors = [
   {
     name: "Blanco",
-    class: "bg-white",
+    class: "bg-ao",
     selectedClass: "ring-gray-400 ring-2 ring ring-offset-2",
   },
   {
@@ -160,7 +160,7 @@ export default function EditProduct() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-ao">
       <div className="lg:py-6">
       <Loading isLoading={isLoading}>
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -246,7 +246,7 @@ export default function EditProduct() {
                   <div className="mt-4 flex text-sm leading-6 text-gray-600">
                     <label
                       htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                      className="relative cursor-pointer rounded-md bg-ao font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                     >
                       <span>Subir imagen</span>
                       <input

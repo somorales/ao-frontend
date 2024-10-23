@@ -48,8 +48,8 @@ function AuthWrapper(props) {
   };
   if (isValidatingToken) {
     return (
-      <div className="bg-white my-auto">
-        <div className="bg-white mx-auto">
+      <div className="bg-ao my-auto">
+        <div className="bg-ao mx-auto">
           <Loading isLoading={true}></Loading>
         </div>
       </div>
