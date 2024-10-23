@@ -6,12 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { PhotoIcon } from "@heroicons/react/24/solid";
 import Loading from "../components/Loading.jsx";
+import { ToastContext } from "../context/toast.context.jsx";
+import { useContext } from "react";
 
 const productoSelectedClass = "ring-2 ring-indigo-600 rounded-md ring-offset-1";
 
 export default function EditKit() {
   const params = useParams();
   const navigate = useNavigate();
+  const { setErrorMessage } = useContext(ToastContext);
 
   const [allProducts, setAllProducts] = useState([]);
 
@@ -35,6 +38,7 @@ export default function EditKit() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   }, []);
 
@@ -54,6 +58,7 @@ export default function EditKit() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   }, []);
 
@@ -90,7 +95,7 @@ export default function EditKit() {
 
       setIsUploading(false); // to stop the loading animation
     } catch (error) {
-      navigate("/error");
+      setErrorMessage("Ocurrió un error al subir la imagen. Por favor, intenta nuevamente.")
     }
   };
 
@@ -148,6 +153,7 @@ export default function EditKit() {
       navigate(`/admin/kits`);
     } catch (error) {
       console.log(error);
+      setErrorMessage("Error de comunicación con el servidor.")
     }
   };
 

@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { PhotoIcon } from "@heroicons/react/24/solid"
 import Loading from "../components/Loading.jsx";
+import { ToastContext } from "../context/toast.context.jsx";
+import { useContext } from "react";
 
 const colors = [
   {
@@ -44,6 +46,7 @@ const sizes = [
 export default function EditProduct() {
   const params = useParams();
   const navigate = useNavigate();
+  const { setErrorMessage } = useContext(ToastContext);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -72,6 +75,7 @@ export default function EditProduct() {
       })
       .catch((err) => {
         console.log(err);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   }, []);
 
@@ -109,6 +113,7 @@ export default function EditProduct() {
       setIsUploading(false); // to stop the loading animation
     } catch (error) {
       navigate("/error");
+      setErrorMessage("Error de comunicación con el servidor.")
     }
   };
 
@@ -150,6 +155,7 @@ export default function EditProduct() {
       navigate(`/admin/products`);
     } catch (error) {
       console.log(error);
+      setErrorMessage("Error de comunicación con el servidor.")
     }
   };
 

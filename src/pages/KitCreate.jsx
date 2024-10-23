@@ -5,11 +5,14 @@ import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
 import { PhotoIcon } from "@heroicons/react/24/solid";
 import Loading from "../components/Loading.jsx";
+import { ToastContext } from "../context/toast.context.jsx";
+import { useContext } from "react";
 
 const productoSelectedClass = 'ring-2 ring-indigo-600 rounded-md ring-offset-1';
 
 export default function KitCreate() {
   const navigate = useNavigate();
+  const { setErrorMessage } = useContext(ToastContext);
 
   const [allProducts, setAllProducts] = useState([]);
 
@@ -33,6 +36,7 @@ export default function KitCreate() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   }, []);
 
@@ -70,7 +74,7 @@ export default function KitCreate() {
 
       setIsUploading(false); // to stop the loading animation
     } catch (error) {
-      navigate("/error");
+      setErrorMessage("Error de comunicación con el servidor.");
     }
   };
 
@@ -125,10 +129,10 @@ export default function KitCreate() {
 
     try {
       await service.post(`/kits`, newKit);
-
       navigate(`/admin/kits`);
     } catch (error) {
       console.log(error);
+      setErrorMessage("Error de comunicación con el servidor.")
     }
   };
 

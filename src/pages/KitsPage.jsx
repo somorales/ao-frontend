@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import service from "../services/config.js";
 import SearchForm from "../components/SearchForm.jsx";
 import Loading from "../components/Loading.jsx";
+import { ToastContext } from "../context/toast.context.jsx";
+import { useContext } from "react";
 
 export default function KitsPage() {
   const [allKits, setAllKits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { setErrorMessage } = useContext(ToastContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -20,6 +23,7 @@ export default function KitsPage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   }, []);
 
@@ -36,6 +40,7 @@ export default function KitsPage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   };
 
@@ -54,7 +59,7 @@ export default function KitsPage() {
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {allKits.map((kit) => (
-            <Link key={kit._id} to={`/admin/products/${kit._id}`}>
+            <Link key={kit._id} to={`/admin/kits/${kit._id}`}>
               <div className="group relative">
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img

@@ -6,9 +6,11 @@ import { useNavigate } from "react-router-dom";
 import service from "../services/config.js";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import Loading from "../components/Loading.jsx";
+import { ToastContext } from "../context/toast.context.jsx";
 
 export default function FavoritesPage() {
   const navigate = useNavigate();
+  const { setErrorMessage } = useContext(ToastContext);
 
   const [allFavorites, setAllFavorites] = useState({ products: [], kits: [] });
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +28,7 @@ export default function FavoritesPage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   }, []);
 
@@ -37,6 +40,7 @@ export default function FavoritesPage() {
       })
       .catch((err) => {
         console.log(err);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   };
 

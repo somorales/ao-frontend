@@ -2,14 +2,16 @@ import aoLogo from "../../assets/images/ao-logo.png";
 import service from "../../services/config";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContext } from "../../context/toast.context.jsx";
+import { useContext } from "react";
 
 function Signup() {
   const navigate = useNavigate();
-
+  const { setErrorMessage } = useContext(ToastContext);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
@@ -33,7 +35,7 @@ function Signup() {
       if (error.response.status === 400) {
         setErrorMessage(error.response.data.message);
       } else {
-        //! aqui deberia haber redirección a /error
+        setErrorMessage("Error de comunicación con el servidor.")
       }
     }
   };

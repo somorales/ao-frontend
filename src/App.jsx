@@ -20,6 +20,9 @@ import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import PrivateUser from "./components/auth/PrivateUser";
+import ToastError from "./components/ToastError";
+import { ToastContext } from "./context/toast.context";
+import { useContext } from "react";
 
 
 
@@ -28,11 +31,14 @@ import PrivateUser from "./components/auth/PrivateUser";
 
 function App() {
   const location = useLocation();
+  const {errorMessage, okMessage, setErrorMessage} = useContext(ToastContext)
+  console.log("error message", errorMessage)
   console.log(location.pathname) 
 
   return (
     <>
       {(location.pathname !== `/signup` && location.pathname !== `/login`) && <NavBar />}
+      {errorMessage && <ToastError errorMessage={errorMessage} setErrorMessage={setErrorMessage} />}
 
       <Routes>
 

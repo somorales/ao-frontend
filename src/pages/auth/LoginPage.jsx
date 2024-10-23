@@ -4,14 +4,15 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context.jsx";
 import { Link } from "react-router-dom";
+import { ToastContext } from "../../context/toast.context.jsx";
 
 function LoginPage() {
   const navigate = useNavigate();
   const { authenticateUser } = useContext(AuthContext);
+  const { setErrorMessage } = useContext(ToastContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -43,8 +44,10 @@ function LoginPage() {
     } catch (error) {
       console.log(error);
       if (error.response.status === 400) {
+        console.log(error.response.data.message)
         setErrorMessage(error.response.data.message);
       } else {
+        setErrorMessage("Error de comunicación con el servidor.")
       }
     }
   };

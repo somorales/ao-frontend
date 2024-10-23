@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import service from "../services/config.js";
 import SearchForm from "../components/SearchForm.jsx";
 import Loading from "../components/Loading.jsx";
+import { ToastContext } from "../context/toast.context.jsx";
+import { useContext } from "react";
 
 export default function ProductsPage() {
   const [allProducts, setAllProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { setErrorMessage } = useContext(ToastContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -20,6 +23,7 @@ export default function ProductsPage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   }, []);
 
@@ -34,6 +38,7 @@ export default function ProductsPage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   };
 

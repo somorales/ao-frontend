@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import service from "../services/config.js";
 import SearchForm from "../components/SearchForm.jsx";
 import Loading from "../components/Loading.jsx";
+import { ToastContext } from "../context/toast.context.jsx";
+
 
 export default function HomePage() {
   const { isAdmin } = useContext(AuthContext);
@@ -13,6 +15,7 @@ export default function HomePage() {
   const [allProducts, setAllProducts] = useState([]);
   const [allKits, setAllKits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { setErrorMessage } = useContext(ToastContext);
 
   useEffect(() => {
     if (isAdmin) {
@@ -31,6 +34,7 @@ export default function HomePage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   }, []);
 
@@ -45,6 +49,7 @@ export default function HomePage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   }, []);
 
@@ -59,6 +64,7 @@ export default function HomePage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
 
     service
@@ -70,6 +76,7 @@ export default function HomePage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.")
       });
   };
 

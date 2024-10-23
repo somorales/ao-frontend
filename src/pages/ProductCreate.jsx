@@ -5,6 +5,8 @@ import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { PhotoIcon } from "@heroicons/react/24/solid";
+import { ToastContext } from "../context/toast.context.jsx";
+import { useContext } from "react";
 
 
 const colors = [
@@ -42,6 +44,7 @@ const sizes = [
 
 export default function ProductCreate() {
   const navigate = useNavigate();
+  const { setErrorMessage } = useContext(ToastContext);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -86,7 +89,7 @@ export default function ProductCreate() {
 
       setIsUploading(false); // to stop the loading animation
     } catch (error) {
-      navigate("/error");
+      setErrorMessage("Error de comunicación con el servidor.");
     }
   };
 
@@ -139,6 +142,7 @@ export default function ProductCreate() {
       navigate(`/admin/products`);
     } catch (error) {
       console.log(error);
+      setErrorMessage("Error de comunicación con el servidor.")
     }
   };
 
