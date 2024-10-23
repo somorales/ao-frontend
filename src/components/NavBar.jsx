@@ -62,13 +62,13 @@ export default function NavBar() {
           <div className="ml-auto hidden lg:flex lg:items-center">
             {!isAdmin && (
               <>
-                <a href="/about">Sobre AO</a>
+                <a href="/about" className="w-20 text-center">Sobre AO</a>
               </>
             )}
           </div>
           <button
             type="button"
-            className="-my-1 -mr-1 ml-6 flex h-8 w-8 items-center justify-center lg:hidden"
+            className="-my-1 -mr-1 ml-4 flex h-8 w-8 items-center justify-center lg:hidden"
           >
             <svg viewBox="0 0 24 24" className="h-6 w-6 stroke-slate-900">
               <path
@@ -79,11 +79,11 @@ export default function NavBar() {
               ></path>
             </svg>
           </button>
-          <div className="hidden lg:ml-6 lg:flex lg:items-center lg:border-l lg:border-slate-900/15">
+          <div className="hidden lg:ml-4 lg:flex lg:items-center lg:border-l lg:border-slate-900/15">
             {isAdmin && (
               <Menu as="div" className="relative ml-3">
                 <div>
-                  <MenuButton className="text-[#efe8db] bg-[#c07c53] hover:bg-[#D68C60] focus:ring-2 focus:outline-none focus:ring-[#D68C60] font-semibold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+                  <MenuButton className="text-[#efe8db] bg-[#c07c53] hover:bg-[#D68C60] focus:ring-2 focus:outline-none focus:ring-[#D68C60] font-semibold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2">
                     <span className="absolute -inset-1.5" />
                     <span className="sr-only">Open user menu</span>
                     <PlusIcon className="h-4 w-4 flex-shrink-0 text-[#efe8db] font-semibold group-hover:text-white mr-1.5" />
@@ -164,11 +164,11 @@ export default function NavBar() {
               <Link to={"/favorites"}>
                 <button
                   type="button"
-                  className="-my-1 ml-auto flex h-8 w-8 items-center justify-center rounded-lg lg:ml-8"
+                  className="-my-1 ml-auto flex h-8 w-8 items-center justify-center rounded-lg lg:ml-4"
                 >
                   <HeartIcon
                     aria-hidden="true"
-                    className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                    className="h-8 w-8 flex-shrink-0 text-[#2a3a2d] group-hover:text-gray-500"
                   />
                 </button>
               </Link>
