@@ -73,16 +73,16 @@ function LoginPage() {
                   htmlFor="email"
                   className="block text-sm font-medium leading-6 text-[#000000]"
                 >
-                  Correo eletrónico
+                  Correo Eletrónico
                 </label>
               </div>
               <div className="mt-2">
                 <input 
                   onChange={handleEmailChange}
-                  placeholder="ejemplo@correo.com"
                   id="email"
                   name="email"
                   type="email"
+                  placeholder="ejemplo@correo.com"
                   required
                   autoComplete="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] sm:text-sm sm:leading-6"
@@ -102,10 +102,10 @@ function LoginPage() {
               <div className="mt-2">
                 <input
                 onChange={handlePasswordChange}
-                placeholder="Usar entre 8-16 caracteres"
                   id="password"
                   name="password"
                   type="password"
+                  placeholder="Usar entre 8-16 caracteres"
                   required
                   autoComplete="current-password"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] sm:text-sm sm:leading-6"
@@ -116,7 +116,7 @@ function LoginPage() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-[#c07c53] px-3 py-1.5 text-sm font-semibold leading-6 text-[#efe8db] shadow-sm hover:bg-[#D68C60] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-[#c07c53] px-3 py-1.5 text-sm font-semibold leading-6 text-[#efe8db] shadow-sm hover:bg-[#D68C60] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D68C60]"
               >
                 Iniciar sesión
               </button>
@@ -130,7 +130,7 @@ function LoginPage() {
             to ={`/signup`}
               className="font-bold leading-6 text-[#c07c53] hover:text-[#D68C60]"
             >
-              Regístrate
+              Crear Cuenta
             </Link>
           </p>
         </div>
