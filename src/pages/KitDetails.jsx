@@ -66,7 +66,7 @@ export default function KitDetails() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-ao">
       <Loading isLoading={isLoading}>
         <div className="lg:py-6">
           <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">

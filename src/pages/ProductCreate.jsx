@@ -12,33 +12,33 @@ import { useContext } from "react";
 const colors = [
   {
     name: "Blanco",
-    class: "bg-ao",
-    selectedClass: "ring-gray-400 ring-2 ring ring-offset-2",
+    class: "bg-white",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
   {
     name: "Gris",
     class: "bg-gray-200",
-    selectedClass: "ring-gray-400 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
   {
     name: "Negro",
     class: "bg-gray-900",
-    selectedClass: "ring-gray-900 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
 ];
 
 const sizes = [
   {
     name: "S",
-    selectedClass: "ring-indigo-400 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
   {
     name: "M",
-    selectedClass: "ring-indigo-400 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
   {
     name: "L",
-    selectedClass: "ring-indigo-400 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
 ];
 
@@ -147,7 +147,7 @@ export default function ProductCreate() {
   };
 
   return (
-    <div className="bg-ao">
+    <div className="bg-white">
       <div className="lg:py-6">
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="aspect-h-4 aspect-w-3">
@@ -167,7 +167,7 @@ export default function ProductCreate() {
           </div>
           <form onSubmit={handleSubmit} method="POST" className="space-y-6 p-6">
             <div className="lg:col-span-2 lg:pr-8">
-              <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+              <h1 className="text-2xl font-bold tracking-tight texttext-[#000000] sm:text-3xl">
                 Crear Producto
               </h1>
             </div>
@@ -176,21 +176,22 @@ export default function ProductCreate() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-[#000000]"
                 >
-                  Nombre del producto
+                  Nombre (Requerido)
                 </label>
               </div>
               <div className="mt-2">
-                <input
+                <textarea
                   onChange={handleNameChange}
                   value={name}
+                  placeholder="Nombre del producto"
                   id="name"
                   name="name"
                   type="text"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] sm:text-sm sm:leading-6"
+                  ></textarea>
               </div>
             </div>
 
@@ -198,20 +199,21 @@ export default function ProductCreate() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-[#000000]"
                 >
-                  Descripción
+                  Descripción (Requerido)
                 </label>
               </div>
               <div className="mt-2">
                 <textarea
                   onChange={handleDescriptionChange}
+                   placeholder="Descripción del producto"
                   value={description}
                   id="description"
                   name="description"
                   type="text"
                   required
-                  className="block w-full h-32 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full h-32 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] sm:text-sm sm:leading-6"
                 ></textarea>
               </div>
             </div>
@@ -219,9 +221,9 @@ export default function ProductCreate() {
             <div className="col-span-full">
               <label
                 htmlFor="cover-photo"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-[#000000]"
               >
-                Imagen del producto
+                Imagen (Requerido)
               </label>
               <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                 <div className="text-center">
@@ -232,9 +234,9 @@ export default function ProductCreate() {
                   <div className="mt-4 flex text-sm leading-6 text-gray-600">
                     <label
                       htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-ao font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                      className="relative cursor-pointer rounded-md bg-white font-semibold text-[#c07c53] focus-within:outline-none focus-within:ring-2 focus-within:ring-[#c07c53] focus-within:ring-offset-2 hover:text-[#D68C60]"
                     >
-                      <span>Subir imagen</span>
+                      <span>Subir imagen del producto</span>
                       <input
                         onChange={handleImageChange}
                         id="file-upload"
@@ -244,7 +246,7 @@ export default function ProductCreate() {
                         className="sr-only"
                       />
                     </label>
-                    <p className="pl-1">o arrastra y suelta</p>
+        
                   </div>
                   <p className="text-xs leading-5 text-gray-600">
                     PNG, JPG, hasta 10MB
@@ -257,9 +259,9 @@ export default function ProductCreate() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-[#000000]"
                 >
-                  Precio (Gs.)
+                  Precio (Gs.) (Requerido)
                 </label>
               </div>
               <div className="mt-2">
@@ -271,7 +273,7 @@ export default function ProductCreate() {
                   type="number"
                   min={1}
                   required
-                  className="block w-44 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-44 rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53]  sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -280,9 +282,9 @@ export default function ProductCreate() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-[#000000]"
                 >
-                  Unidades
+                  Unidades (Requerido)
                 </label>
               </div>
               <div className="mt-2">
@@ -294,14 +296,13 @@ export default function ProductCreate() {
                   type="number"
                   min={1}
                   required
-                  className="block w-44 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-44 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
             <div>
-              {/* Ejemplo de referencia https://tailwindui.com/components/ecommerce/components/product-overviews */}
-              <h3 className="text-sm font-medium text-gray-900">Color</h3>
+              <h3 className="text-sm font-medium text-[#000000]">Color (Opcional)</h3>
               <fieldset aria-label="Choose a color" className="mt-4">
                 <RadioGroup
                   value={color}
@@ -330,7 +331,7 @@ export default function ProductCreate() {
 
             <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-medium text-gray-900">Tamaño</h3>
+                <h3 className="text-sm font-medium text-[#000000]">Tamaño (Opcional)</h3>
               </div>
 
               <fieldset aria-label="Choose a size" className="mt-4">
@@ -356,13 +357,13 @@ export default function ProductCreate() {
 
             <button
               type="submit"
-              className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#c07c53] px-8 py-3 text-base font-semibold text-[#efe8db] hover:bg-[#D68C60] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
             >
               Crear Producto
             </button>
 
             <Link to={`/admin/products`}>
-              <button className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <button className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#efe8db]  px-8 py-3 text-base font-medium text-[#000000] hover:bg-[#d2ccb4] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Cancelar
               </button>
             </Link>
