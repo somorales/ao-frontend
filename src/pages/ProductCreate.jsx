@@ -168,7 +168,7 @@ export default function ProductCreate() {
           </div>
           <form onSubmit={handleSubmit} method="POST" className="space-y-6 p-6">
             <div className="lg:col-span-2 lg:pr-8">
-              <h1 className="text-2xl font-bold tracking-tight texttext-[#000000] sm:text-3xl">
+              <h1 className="text-2xl font-bold tracking-tight text-[#000000] sm:text-3xl">
                 Crear Producto
               </h1>
             </div>
@@ -208,8 +208,8 @@ export default function ProductCreate() {
               <div className="mt-2">
                 <textarea
                   onChange={handleDescriptionChange}
-                  placeholder="Descripción del producto"
                   value={description}
+                  placeholder="Descripción del producto"
                   id="description"
                   name="description"
                   type="text"

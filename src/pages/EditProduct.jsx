@@ -163,19 +163,15 @@ export default function EditProduct() {
       <div className="lg:py-6">
         <Loading isLoading={isLoading}>
           <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-            <div className="aspect-h-4 aspect-w-3">
+          <div className="p-6 space-y-6">
+          <div className="flex justify-center h-80 lg:h-96">
               {image && (
                 <img
                   src={image}
-                  className="h-full w-full object-cover object-center rounded-lg"
+                  className="max-h-80 w-auto object-cover object-center rounded-lg lg:h-[38rem]"
                 />
               )}
-              <div className="h-full w-full object-cover object-center rounded-lg border lg:p-6">
-                {isUploading ? (
-                  <div>
-                    <h2>subiendo imagen...</h2>
-                  </div>
-                ) : null}
+             
               </div>
             </div>
             <form
