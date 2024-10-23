@@ -9,7 +9,7 @@ import Loading from "../components/Loading.jsx";
 import { ToastContext } from "../context/toast.context.jsx";
 import { useContext } from "react";
 
-const productoSelectedClass = "ring-2 ring-indigo-600 rounded-md ring-offset-1";
+const productoSelectedClass = "ring-2 ring-[#c07c53] rounded-md ring-offset-1";
 
 export default function EditKit() {
   const params = useParams();
@@ -38,7 +38,7 @@ export default function EditKit() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
-        setErrorMessage("Error de comunicación con el servidor.")
+        setErrorMessage("Error de comunicación con el servidor.");
       });
   }, []);
 
@@ -58,7 +58,7 @@ export default function EditKit() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
-        setErrorMessage("Error de comunicación con el servidor.")
+        setErrorMessage("Error de comunicación con el servidor.");
       });
   }, []);
 
@@ -95,7 +95,9 @@ export default function EditKit() {
 
       setIsUploading(false); // to stop the loading animation
     } catch (error) {
-      setErrorMessage("Ocurrió un error al subir la imagen. Por favor, intenta nuevamente.")
+      setErrorMessage(
+        "Ocurrió un error al subir la imagen. Por favor, intenta nuevamente."
+      );
     }
   };
 
@@ -153,29 +155,33 @@ export default function EditKit() {
       navigate(`/admin/kits`);
     } catch (error) {
       console.log(error);
-      setErrorMessage("Error de comunicación con el servidor.")
+      setErrorMessage("Error de comunicación con el servidor.");
     }
   };
 
   return (
-    <div className="bg-ao">
+    <div className="bg-white">
       <div className="lg:py-6">
         <Loading isLoading={isLoading}>
           <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-            <div className="aspect-h-4 aspect-w-3">
+          <div className="p-6 space-y-6">
+
+          <div className="flex justify-center h-80 lg:h-96">
               {image && (
                 <img
                   src={image}
-                  className="h-full w-full object-cover object-center rounded-lg"
+                  className="max-h-80 w-auto object-cover object-center rounded-lg lg:h-[38rem]"
                 />
               )}
-              <div className="h-full w-full object-cover object-center rounded-lg border lg:p-6">
-                {isUploading ? (
-                  <div>
-                    <h2>subiendo imagen...</h2>
-                  </div>
-                ) : null}
-              </div>
+              {!image && (
+                <div className="flex w-full object-cover object-center rounded-lg border lg:h-[38rem]">
+                  <PhotoIcon
+                    aria-hidden="true"
+                    className="mx-auto my-auto max-h-80 object-cover object-center rounded-lg lg:h-[12rem] text-gray-300"
+                  />
+                </div>
+              )}
+            </div>
             </div>
             <form
               onSubmit={handleSubmit}
@@ -192,21 +198,21 @@ export default function EditKit() {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 text-[#000000]"
                   >
-                    Nombre del producto
+                   Nombre (Requerido)
                   </label>
                 </div>
                 <div className="mt-2">
-                  <input
+                  <textarea
                     onChange={handleNameChange}
                     value={name}
                     id="name"
                     name="name"
                     type="text"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] sm:text-sm sm:leading-6"
+                    ></textarea>
                 </div>
               </div>
 
@@ -214,9 +220,9 @@ export default function EditKit() {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 text-[#000000]"
                   >
-                    Descripción
+                    Descripción (Requerido)
                   </label>
                 </div>
                 <div className="mt-2">
@@ -227,7 +233,7 @@ export default function EditKit() {
                     name="description"
                     type="text"
                     required
-                    className="block w-full h-32 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full h-32 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] sm:text-sm sm:leading-6"
                   ></textarea>
                 </div>
               </div>
@@ -237,7 +243,7 @@ export default function EditKit() {
                   htmlFor="cover-photo"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Imagen del producto
+                  Imagen (Requerido)
                 </label>
                 <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                   <div className="text-center">
@@ -248,9 +254,9 @@ export default function EditKit() {
                     <div className="mt-4 flex text-sm leading-6 text-gray-600">
                       <label
                         htmlFor="file-upload"
-                        className="relative cursor-pointer rounded-md bg-ao font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                        className="relative cursor-pointer rounded-md  font-semibold text-[#c07c53] focus-within:outline-none focus-within:ring-2 focus-within:ring-[#c07c53]  focus-within:ring-offset-2 hover:text-[#D68C60]"
                       >
-                        <span>Subir imagen</span>
+                        <span>Subir imagen del combo</span>
                         <input
                           onChange={handleImageChange}
                           id="file-upload"
@@ -260,7 +266,6 @@ export default function EditKit() {
                           className="sr-only"
                         />
                       </label>
-                      <p className="pl-1">o arrastra y suelta</p>
                     </div>
                     <p className="text-xs leading-5 text-gray-600">
                       PNG, JPG, hasta 10MB
@@ -273,9 +278,9 @@ export default function EditKit() {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 text-[#000000]"
                   >
-                    Precio (Gs.)
+                    Precio (Gs.) (Requerido)
                   </label>
                 </div>
                 <div className="mt-2">
@@ -287,7 +292,7 @@ export default function EditKit() {
                     type="number"
                     min={1}
                     required
-                    className="block w-44 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-44 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  focus:ring-[#c07c53] sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -296,9 +301,9 @@ export default function EditKit() {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6  text-[#000000]"
                   >
-                    Unidades
+                    Unidades (Requerido)
                   </label>
                 </div>
 
@@ -311,48 +316,59 @@ export default function EditKit() {
                     type="number"
                     min={1}
                     required
-                    className="block w-44 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-44 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
-              <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
-                <div>
-                  <h3 className="text-sm font-medium text-gray-900">
-                    Productos
-                  </h3>
-                  {allProducts.map((eachProduct) => (
-                    <div key={eachProduct._id} className="space-y-6">
-                      <p className="text-base text-gray-900">
-                        {eachProduct.name}
-                      </p>
-                      <img
-                        src={eachProduct.image}
-                        alt="image"
-                        className={`h-40 hover:cursor-pointer ${
-                          selectedProducts.includes(eachProduct._id)
-                            ? productoSelectedClass
-                            : ""
-                        }`}
-                        onClick={(event) => handleProductClick(eachProduct)}
-                      />
-                    </div>
-                  ))}
+              <div>
+                <div className="flex items-center justify-between">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium leading-6  text-[#000000]"
+                  >
+                    Seleccionar Productos (Opcional)
+                  </label>
+                </div>
+                <div className="mt-2">
+                  <div className="flex flex-row flex-wrap gap-10">
+                    {allProducts.map((eachProduct) => (
+                      <div
+                        key={eachProduct._id}
+                        className="space-y-4 space-x-1"
+                      >
+                        <p className="text-sm font-medium text-gray-600 ">
+                          {eachProduct.name}
+                        </p>
+                        <img
+                          src={eachProduct.image}
+                          alt="image"
+                          className={`h-24 w-20  hover:cursor-pointer  ${
+                            selectedProducts.includes(eachProduct._id)
+                              ? productoSelectedClass
+                              : ""
+                          }`}
+                          onClick={(event) => handleProductClick(eachProduct)}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#c07c53] px-8 py-3 text-base font-semibold text-[#efe8db] hover:bg-[#D68C60] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
               >
-                Editar Combo
+                Crear Producto
               </button>
 
-              <Link to={`/admin/kits`}>
-                <button className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                  Cancelar
-                </button>
-              </Link>
+              <button
+                onClick={() => navigate("/admin/kits")}
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#efe8db] px-8 py-3 text-base font-medium text-[#000000] hover:bg-[#d2ccb4] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
+              >
+                Cancelar
+              </button>
             </form>
           </div>
         </Loading>

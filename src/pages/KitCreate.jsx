@@ -226,7 +226,7 @@ export default function KitCreate() {
                   <div className="mt-4 flex text-sm leading-6 text-gray-600">
                     <label
                       htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-white font-semibold text-[#c07c53] focus-within:outline-none focus-within:ring-2 focus-within:ring-[#c07c53] focus-within:ring-offset-2 hover:text-[#D68C60]"
+                      className="relative cursor-pointer rounded-md  font-semibold text-[#c07c53] focus-within:outline-none focus-within:ring-2 focus-within:ring-[#c07c53]  focus-within:ring-offset-2 hover:text-[#D68C60]"
                     >
                       <span>Subir imagen del combo</span>
                       <input
@@ -293,7 +293,7 @@ export default function KitCreate() {
               </div>
             </div>
 
-            <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
+            <div >
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="name"
