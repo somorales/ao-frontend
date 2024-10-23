@@ -148,19 +148,22 @@ export default function ProductCreate() {
     <div className="bg-white">
       <div className="lg:py-6">
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-          <div className="aspect-h-4 aspect-w-3">
-            {image && (
-              <img
-                src={image}
-                className="h-full w-full object-cover object-center rounded-lg"
-              />
-            )}
-            <div className="h-full w-full object-cover object-center rounded-lg border lg:p-6">
-              {isUploading ? (
-                <div>
-                  <h2>subiendo imagen...</h2>
+          <div className="p-6 space-y-6">
+            <div className="flex justify-center h-80 lg:h-96">
+              {image && (
+                <img
+                  src={image}
+                  className="max-h-80 w-auto object-cover object-center rounded-lg lg:h-[38rem]"
+                />
+              )}
+              {!image && (
+                <div className="flex w-full object-cover object-center rounded-lg border lg:h-[38rem]">
+                  <PhotoIcon
+                    aria-hidden="true"
+                    className="mx-auto my-auto max-h-80 object-cover object-center rounded-lg lg:h-[12rem] text-gray-300"
+                  />
                 </div>
-              ) : null}
+              )}
             </div>
           </div>
           <form onSubmit={handleSubmit} method="POST" className="space-y-6 p-6">
