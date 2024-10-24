@@ -1,34 +1,36 @@
-import React from 'react'
+import React from "react";
+import ao from "../assets/images/ao-about.png";
 
 export default function AboutPage() {
-
- return(
-
-<div>
-
-<div className="sm:flex items-center max-w-screen-xl">
-    <div className="sm:w-1/2 p-10">
-        <div className="image object-center text-center">
-            <img src="https://i.imgur.com/WbQnbas.png" />
+  return (
+    <div>
+      <div className="sm:flex items-center max-w-screen-xl">
+        <div className="sm:w-1/2 p-10">
+          <div className="image object-center text-center">
+            <img src={ao} />
+          </div>
         </div>
-    </div>
-    <div className="sm:w-1/2 p-5">
-        <div className="text">
-            <span className="text-gray-500 border-b-2 border-indigo-600 uppercase">About us</span>
-            <h2 className="my-4 font-bold text-3xl  sm:text-4xl ">About <span className="text-indigo-600">Our Company</span>
+        <div className="sm:w-1/2 p-5">
+          <div className="text">
+            <h2 className="my-4 text-[#000000] font-bold text-3xl  sm:text-4xl ">
+              Sobre <span className="text-[#c07c53]">AO</span>
             </h2>
-            <p className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi
-                doloremque, fugiat illum magni minus nisi nulla numquam obcaecati placeat quia, repellat tempore
-                voluptatum.
+            <p className="text-[#000000]">
+              Nuestro objetivo es promover y preservar la riqueza cultural y
+              lingüística del guaraní, uno de los idiomas oficiales de Paraguay
+              y una herencia viva de nuestros ancestros. A través de nuestros
+              productos, celebramos el espíritu y la identidad guaraní,
+              llevándolos a hogares tanto dentro como fuera del país. Nuestros
+              artículos están cuidadosamente seleccionados para reflejar lo
+              mejor de la artesanía, arte y tradiciones paraguayas, con un
+              enfoque especial en el idioma guaraní, que es un pilar fundamental
+              de nuestra cultura. Creemos que cada pieza que ofrecemos cuenta
+              una historia y es una oportunidad para aprender, compartir y
+              difundir el orgullo por nuestras raíces.
             </p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-
-
-</div>
-
-
- )
-};
+  );
+}

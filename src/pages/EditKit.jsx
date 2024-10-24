@@ -262,7 +262,6 @@ export default function EditKit() {
                           id="file-upload"
                           name="file-upload"
                           type="file"
-                          required
                           className="sr-only"
                         />
                       </label>
