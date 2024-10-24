@@ -57,7 +57,7 @@ export default function ProductDetails() {
 
   const navigate = useNavigate();
 
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState({});
 
   const { isLoggedIn, isAdmin } = useContext(AuthContext);
 
@@ -80,10 +80,6 @@ export default function ProductDetails() {
         setErrorMessage("Error de comunicación con el servidor.");
       });
   }, []);
-
-  if (product === null) {
-    return <h3>...loading</h3>;
-  }
 
   const handleAdd = async (e) => {
     e.preventDefault();
