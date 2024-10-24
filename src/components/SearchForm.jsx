@@ -15,7 +15,7 @@ export default function SearchForm(props) {
 
 
   return (
-    <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -43,13 +43,13 @@ export default function SearchForm(props) {
         <input
           type="search"
           id="default-search"
-          className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+          className="block w-full h-10 p-4 ps-10 text-sm text-gray-900 rounded-lg ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] focus:border-none"
           placeholder={props.placeholder}
           onChange={handleSearchChange}
         />
         <button
           type="submit"
-          className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+          className="font-semibold text-[#efe8db] absolute end-2.5 bottom-1.5 bg-[#c07c53] hover:bg-[#D68C60] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2 rounded-lg text-sm px-2 py-1"
         >
           Buscar
         </button>

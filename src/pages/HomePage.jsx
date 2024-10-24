@@ -7,6 +7,8 @@ import service from "../services/config.js";
 import SearchForm from "../components/SearchForm.jsx";
 import Loading from "../components/Loading.jsx";
 import { ToastContext } from "../context/toast.context.jsx";
+import AoCarousel from "../components/AoCarousel.jsx";
+import AoQuote from "../components/AoQuote.jsx";
 
 
 export default function HomePage() {
@@ -34,7 +36,7 @@ export default function HomePage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
-        setErrorMessage("Error de comunicación con el servidor.")
+        setErrorMessage("Error de comunicación con el servidor.");
       });
   }, []);
 
@@ -49,7 +51,7 @@ export default function HomePage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
-        setErrorMessage("Error de comunicación con el servidor.")
+        setErrorMessage("Error de comunicación con el servidor.");
       });
   }, []);
 
@@ -64,7 +66,7 @@ export default function HomePage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
-        setErrorMessage("Error de comunicación con el servidor.")
+        setErrorMessage("Error de comunicación con el servidor.");
       });
 
     service
@@ -76,19 +78,27 @@ export default function HomePage() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
-        setErrorMessage("Error de comunicación con el servidor.")
+        setErrorMessage("Error de comunicación con el servidor.");
       });
   };
 
   return (
     <div className="bg-ao">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
+        <AoCarousel />
+        <AoQuote />
+        <div className="flex flex-col mt-8 lg:grid lg:grid-cols-2">
+          <h1 className="text-3xl	font-bold pb-4">Tienda</h1>
+          <div className="lg:flex lg:flex-row lg:justify-end">
+            <div className="w-full lg:w-96">
+              <SearchForm
+                placeholder="Buscar Productos..."
+                onSearch={handleSearchProduct}
+              />
+            </div>
+          </div>
+        </div>
         <Loading isLoading={isLoading}>
-          <h1 className="text-4xl	font-bold pb-4">Listado de Productos</h1>
-          <SearchForm
-            placeholder="Buscar Productos..."
-            onSearch={handleSearchProduct}
-          />
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {allProducts.map((product) => (
               <Link key={product._id} to={`/products/${product._id}`}>
