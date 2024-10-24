@@ -164,11 +164,11 @@ export default function EditProduct() {
         <Loading isLoading={isLoading}>
           <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="p-6 space-y-6">
-          <div className="flex justify-center h-80 lg:h-96">
+          <div className="flex justify-center h-80 lg:h-[38rem]">
               {image && (
                 <img
                   src={image}
-                  className="max-h-80 w-auto object-cover object-center rounded-lg lg:h-[38rem]"
+                  className="flex w-full object-cover object-center rounded-lg border lg:h-[38rem]"
                 />
               )}
              

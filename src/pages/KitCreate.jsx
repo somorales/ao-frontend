@@ -140,11 +140,11 @@ export default function KitCreate() {
       <div className="lg:py-6">
         <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="p-6 space-y-6">
-            <div className="flex justify-center h-80 lg:h-96">
+            <div className="flex justify-center h-80 lg:h-[38rem]">
               {image && (
                 <img
                   src={image}
-                  className="max-h-80 w-auto object-cover object-center rounded-lg lg:h-[38rem]"
+                  className="flex w-full object-cover object-center rounded-lg border lg:h-[38rem]"
                 />
               )}
               {!image && (
@@ -329,7 +329,7 @@ export default function KitCreate() {
               type="submit"
               className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#c07c53] px-8 py-3 text-base font-semibold text-[#efe8db] hover:bg-[#D68C60] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
             >
-              Crear Producto
+              Crear Combo
             </button>
 
             <button

@@ -102,11 +102,11 @@ export default function ProductDetails() {
       <Loading isLoading={isLoading}>
         <div className="lg:py-6">
           <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-            <div className="aspect-h-4 aspect-w-3">
+            <div className="flex justify-center h-80 lg:h-[38rem]">
               <img
                 alt={product.name}
                 src={product.image}
-                className="h-full w-full object-cover object-center rounded-lg"
+                className="flex w-full object-cover object-center rounded-lg border lg:h-[38rem]"
               />
             </div>
 
