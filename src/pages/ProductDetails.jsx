@@ -80,6 +80,7 @@ export default function ProductDetails() {
 
     if (!isLoggedIn) {
       navigate("/login");
+      return
     }
 
     const productFavorite = {
