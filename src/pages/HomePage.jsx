@@ -88,7 +88,7 @@ export default function HomePage() {
         <AoCarousel />
         <AoQuote />
         <div className="flex flex-col mt-8 lg:grid lg:grid-cols-2">
-          <h1 className="text-3xl	font-bold pb-4">Tienda</h1>
+          <h1 className="text-3xl text-[#2a3a2d]	font-semibold italic pb-4">Tienda</h1>
           <div className="lg:flex lg:flex-row lg:justify-end">
             <div className="w-full lg:w-96">
               <SearchForm
@@ -112,7 +112,7 @@ export default function HomePage() {
                   </div>
                   <div className="mt-4 flex justify-between">
                     <div>
-                      <h3 className="text-sm text-gray-700">
+                      <h3 className="text-base text-[#000000]">
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.name}
                       </h3>
@@ -136,7 +136,7 @@ export default function HomePage() {
                   </div>
                   <div className="mt-4 flex justify-between">
                     <div>
-                      <h3 className="text-sm text-gray-700">
+                      <h3 className="text-base text-[#000000]">
                         <span aria-hidden="true" className="absolute inset-0" />
                         {kit.name}
                       </h3>

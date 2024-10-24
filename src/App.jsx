@@ -39,43 +39,41 @@ function App() {
 
   return (
     <>
-      <div>
-        {(location.pathname !== `/signup` && location.pathname !== `/login`) && <NavBar />}
-        {errorMessage && <ToastError errorMessage={errorMessage} setErrorMessage={setErrorMessage} />}
-        <Routes>
-          <Route path="/about" element={<AboutPage />} />
+      {(location.pathname !== `/signup` && location.pathname !== `/login`) && <NavBar />}
+      {errorMessage && <ToastError errorMessage={errorMessage} setErrorMessage={setErrorMessage} />}
+      <Routes>
+        <Route path="/about" element={<AboutPage />} />
 
-          <Route path="/favorites" element={<PrivateUser> <FavoritesPage /> </PrivateUser>} />
+        <Route path="/favorites" element={<PrivateUser> <FavoritesPage /> </PrivateUser>} />
 
-          <Route path="/login" element={<LoginPage />} />
-            
-            <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<LoginPage />} />
+          
+          <Route path="/signup" element={<Signup />} />
 
-            <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
 
-            <Route path="/admin/products" element={  <PrivateAdmin>  <ProductsPage />   </PrivateAdmin>} />
+          <Route path="/admin/products" element={  <PrivateAdmin>  <ProductsPage />   </PrivateAdmin>} />
 
-            <Route path="/admin/products/create" element={  <PrivateAdmin>  <ProductCreate />   </PrivateAdmin>} />
+          <Route path="/admin/products/create" element={  <PrivateAdmin>  <ProductCreate />   </PrivateAdmin>} />
 
-            <Route path="/admin/products/:productId" element={  <PrivateAdmin>  <ProductDetails />   </PrivateAdmin>} />
+          <Route path="/admin/products/:productId" element={  <PrivateAdmin>  <ProductDetails />   </PrivateAdmin>} />
 
-            <Route path="/admin/products/:productId/edit" element={  <PrivateAdmin>  <EditProduct />   </PrivateAdmin>} />
+          <Route path="/admin/products/:productId/edit" element={  <PrivateAdmin>  <EditProduct />   </PrivateAdmin>} />
 
-            <Route path="/admin/kits" element={  <PrivateAdmin>  <KitsPage />   </PrivateAdmin>} />
+          <Route path="/admin/kits" element={  <PrivateAdmin>  <KitsPage />   </PrivateAdmin>} />
 
-            <Route path="/admin/kits/create" element={  <PrivateAdmin>  <KitCreate />   </PrivateAdmin>} />
+          <Route path="/admin/kits/create" element={  <PrivateAdmin>  <KitCreate />   </PrivateAdmin>} />
 
-            <Route path="/admin/kits/:kitId" element={  <PrivateAdmin>  <KitDetails />   </PrivateAdmin>} />
+          <Route path="/admin/kits/:kitId" element={  <PrivateAdmin>  <KitDetails />   </PrivateAdmin>} />
 
-            <Route path="/admin/kits/:kitId/edit" element={  <PrivateAdmin>  <EditKit />   </PrivateAdmin>} />
+          <Route path="/admin/kits/:kitId/edit" element={  <PrivateAdmin>  <EditKit />   </PrivateAdmin>} />
 
-            <Route path="/products/:productId" element={  <ProductDetails /> } />
+          <Route path="/products/:productId" element={  <ProductDetails /> } />
 
-            <Route path="/kits/:kitId" element={  <KitDetails /> } />
-            
-            <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </div>
+          <Route path="/kits/:kitId" element={  <KitDetails /> } />
+          
+          <Route path="*" element={<ErrorPage />} />
+      </Routes>
     </>
   );
 }

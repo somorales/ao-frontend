@@ -43,14 +43,20 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="bg-ao">
+    <div>
        <Loading isLoading={isLoading}>
       <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h1 className="text-4xl	font-bold pb-4">Listado de Productos</h1>
-        <SearchForm
-          placeholder="Buscar productos..."
-          onSearch={handleSearchProduct}
-        />
+        <div className="flex flex-col mt-8 lg:grid lg:grid-cols-2">
+          <h1 className="text-3xl text-[#2a3a2d]	font-semibold italic pb-4">Gestión de Productos</h1>
+          <div className="lg:flex lg:flex-row lg:justify-end">
+            <div className="w-full lg:w-96">
+              <SearchForm
+                placeholder="Buscar Productos..."
+                onSearch={handleSearchProduct}
+              />
+            </div>
+          </div>
+        </div>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {allProducts.length === 0 && (
             <p>No se encuentran productos.</p>

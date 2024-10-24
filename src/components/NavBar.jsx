@@ -33,7 +33,7 @@ export default function NavBar() {
   };
 
   return (
-    <header className="relative z-50 w-full flex-none text-sm font-semibold leading-6 text-slate-900">
+    <header className="relative z-50 w-full flex-none text-sm font-semibold leading-6 text-slate-900 bg-ao">
       <nav
         aria-label="Global"
         className="mx-auto max-w-container px-4 sm:px-6 lg:px-36"
