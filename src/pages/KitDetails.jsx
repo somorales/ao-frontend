@@ -12,7 +12,7 @@ export default function KitDetails() {
 
   const params = useParams();
 
-  const [kit, setKit] = useState({products: []});
+  const [kit, setKit] = useState({ products: [] });
 
   const { isLoggedIn, isAdmin } = useContext(AuthContext);
 
@@ -118,33 +118,34 @@ export default function KitDetails() {
                   <h3 className="text-lg font-medium text-[#000000]">
                     Productos
                   </h3>
-                  {kit.products.map((eachProduct) => (
-                    <div key={eachProduct._id} className="space-y-2">
-                      <p className="text-sm text-gray-900">
-                        {eachProduct.name}
-                      </p>
-                      <img
-                        src={eachProduct.image}
-                        alt="image"
-                        className="h-40"
-                      />
-                    </div>
-                  ))}
+                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
+                    {kit.products.map((eachProduct) => (
+                      <div key={eachProduct._id} className="">
+                        <p className="text-sm font-medium text-gray-600 ">
+                          {eachProduct.name}
+                        </p>
+                        <img
+                          src={eachProduct.image}
+                          className={`h-44 w-44 object-cover object-center`}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {isAdmin && (
-                 <button
-                 onClick={() => navigate(`/admin/kits/${kit._id}/edit`)}
-                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#c07c53] px-8 py-3 text-base font-semibold text-[#efe8db] hover:bg-[#D68C60] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
-                 >
-                    Editar
-                  </button>
+                <button
+                  onClick={() => navigate(`/admin/kits/${kit._id}/edit`)}
+                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#c07c53] px-8 py-3 text-base font-semibold text-[#efe8db] hover:bg-[#D68C60] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
+                >
+                  Editar
+                </button>
               )}
               {isAdmin && (
                 <button
                   onClick={handleDelete}
-                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent  px-8 py-3 text-base font-medium text-[#c07c53] hover:bg-[#d2ccb4] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
+                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent  px-8 py-3 text-base font-medium text-[#c07c53] hover:bg-[#d2ccb4] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
                 >
                   Borrar
                 </button>

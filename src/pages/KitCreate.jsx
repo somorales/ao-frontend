@@ -293,7 +293,7 @@ export default function KitCreate() {
               </div>
             </div>
 
-            <div >
+            <div>
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="name"
@@ -302,26 +302,24 @@ export default function KitCreate() {
                   Seleccionar Productos (Opcional)
                 </label>
               </div>
-              <div className="mt-2">
-                <div className="flex flex-row flex-wrap gap-10">
-                  {allProducts.map((eachProduct) => (
-                    <div key={eachProduct._id} className="space-y-4 space-x-1">
-                      <p className="text-sm font-medium text-gray-600 ">
-                        {eachProduct.name}
-                      </p>
-                      <img
-                        src={eachProduct.image}
-                        alt="image"
-                        className={`h-24 w-20  hover:cursor-pointer ${
-                          selectedProducts.includes(eachProduct._id)
-                            ? productoSelectedClass
-                            : ""
-                        }`}
-                        onClick={(event) => handleProductClick(eachProduct)}
-                      />
-                    </div>
-                  ))}
-                </div>
+
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
+                {allProducts.map((eachProduct) => (
+                  <div key={eachProduct._id} className="">
+                    <p className="text-sm font-medium text-gray-600 ">
+                      {eachProduct.name}
+                    </p>
+                    <img
+                      src={eachProduct.image}
+                      className={`h-44 w-44 object-cover object-center hover:cursor-pointer ${
+                        selectedProducts.includes(eachProduct._id)
+                          ? productoSelectedClass
+                          : ""
+                      }`}
+                      onClick={(event) => handleProductClick(eachProduct)}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 

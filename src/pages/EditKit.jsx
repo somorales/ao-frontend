@@ -164,24 +164,23 @@ export default function EditKit() {
       <div className="lg:py-6">
         <Loading isLoading={isLoading}>
           <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-          <div className="p-6 space-y-6">
-
-          <div className="flex justify-center h-80 lg:h-[38rem]">
-              {image && (
-                <img
-                  src={image}
-                  className="flex w-full object-cover object-center rounded-lg border lg:h-[38rem]"
-                />
-              )}
-              {!image && (
-                <div className="flex w-full object-cover object-center rounded-lg border lg:h-[38rem]">
-                  <PhotoIcon
-                    aria-hidden="true"
-                    className="mx-auto my-auto max-h-80 object-cover object-center rounded-lg lg:h-[12rem] text-gray-300"
+            <div className="p-6 space-y-6">
+              <div className="flex justify-center h-80 lg:h-[38rem]">
+                {image && (
+                  <img
+                    src={image}
+                    className="flex w-full object-cover object-center rounded-lg border lg:h-[38rem]"
                   />
-                </div>
-              )}
-            </div>
+                )}
+                {!image && (
+                  <div className="flex w-full object-cover object-center rounded-lg border lg:h-[38rem]">
+                    <PhotoIcon
+                      aria-hidden="true"
+                      className="mx-auto my-auto max-h-80 object-cover object-center rounded-lg lg:h-[12rem] text-gray-300"
+                    />
+                  </div>
+                )}
+              </div>
             </div>
             <form
               onSubmit={handleSubmit}
@@ -200,7 +199,7 @@ export default function EditKit() {
                     htmlFor="name"
                     className="block text-sm font-medium leading-6 text-[#000000]"
                   >
-                   Nombre (Requerido)
+                    Nombre (Requerido)
                   </label>
                 </div>
                 <div className="mt-2">
@@ -212,7 +211,7 @@ export default function EditKit() {
                     type="text"
                     required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#c07c53] sm:text-sm sm:leading-6"
-                    ></textarea>
+                  ></textarea>
                 </div>
               </div>
 
@@ -329,29 +328,23 @@ export default function EditKit() {
                     Seleccionar Productos (Opcional)
                   </label>
                 </div>
-                <div className="mt-2">
-                  <div className="flex flex-row flex-wrap gap-10">
-                    {allProducts.map((eachProduct) => (
-                      <div
-                        key={eachProduct._id}
-                        className="space-y-4 space-x-1"
-                      >
-                        <p className="text-sm font-medium text-gray-600 ">
-                          {eachProduct.name}
-                        </p>
-                        <img
-                          src={eachProduct.image}
-                          alt="image"
-                          className={`h-24 w-20  hover:cursor-pointer  ${
-                            selectedProducts.includes(eachProduct._id)
-                              ? productoSelectedClass
-                              : ""
-                          }`}
-                          onClick={(event) => handleProductClick(eachProduct)}
-                        />
-                      </div>
-                    ))}
-                  </div>
+                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
+                  {allProducts.map((eachProduct) => (
+                    <div key={eachProduct._id} className="">
+                      <p className="text-sm font-medium text-gray-600 ">
+                        {eachProduct.name}
+                      </p>
+                      <img
+                        src={eachProduct.image}
+                        className={`h-44 w-44 object-cover object-center hover:cursor-pointer ${
+                          selectedProducts.includes(eachProduct._id)
+                            ? productoSelectedClass
+                            : ""
+                        }`}
+                        onClick={(event) => handleProductClick(eachProduct)}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
 
