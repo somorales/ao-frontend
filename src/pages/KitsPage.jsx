@@ -74,11 +74,11 @@ export default function KitsPage() {
                   </div>
                   <div className="mt-4 flex justify-between">
                     <div>
-                      <h3 className="text-sm text-gray-700">
+                      <h3 className="text-base text-[#000000]">
                         <span aria-hidden="true" className="absolute inset-0" />
                         {kit.name}
                       </h3>
-                      <p className="mt-1 text-sm text-gray-500">
+                      <p className="mt-1 text-sm text-gray-800">
                         {kit.quantity} unidades
                       </p>
                     </div>

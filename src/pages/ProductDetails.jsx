@@ -25,6 +25,16 @@ const colors = [
     class: "bg-gray-900",
     selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
+  {
+    name: "Rosa",
+    class: "bg-pink-500",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
+  },
+  {
+    name: "Azul",
+    class: "bg-blue-500",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
+  },
 ];
 
 const sizes = [

@@ -73,11 +73,11 @@ export default function ProductsPage() {
                 </div>
                 <div className="mt-4 flex justify-between">
                   <div>
-                    <h3 className="text-sm text-gray-700">
+                    <h3 className="text-base text-[#000000]">
                       <span aria-hidden="true" className="absolute inset-0" />
                       {product.name}
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500">
+                    <p className="mt-1 text-sm text-gray-800">
                       {product.quantity} unidades
                     </p>
                   </div>
