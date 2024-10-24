@@ -13,32 +13,32 @@ const colors = [
   {
     name: "Blanco",
     class: "bg-ao",
-    selectedClass: "ring-gray-400 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
   {
     name: "Gris",
     class: "bg-gray-200",
-    selectedClass: "ring-gray-400 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
   {
     name: "Negro",
     class: "bg-gray-900",
-    selectedClass: "ring-gray-900 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
 ];
 
 const sizes = [
   {
     name: "S",
-    selectedClass: "ring-indigo-400 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
   {
     name: "M",
-    selectedClass: "ring-indigo-400 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
   {
     name: "L",
-    selectedClass: "ring-indigo-400 ring-2 ring ring-offset-2",
+    selectedClass: "ring-[#c07c53] ring-2 ring ring-offset-2",
   },
 ];
 
@@ -97,7 +97,7 @@ export default function ProductDetails() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#EDE9D8]">
       <Loading isLoading={isLoading}>
         <div className="lg:py-6">
           <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -113,24 +113,24 @@ export default function ProductDetails() {
             <div className="p-6">
             <div className="mt-4">
               <div className="lg:col-span-2 lg:pr-8">
-                <h1 className="text-2xl font-bold tracking-tight [#000000] sm:text-3xl">
+                <h1 className="text-2xl font-bold tracking-tight text-[#000000] sm:text-3xl">
                   {product.name}
                 </h1>
               </div>
               </div>
               <div className="mt-4 lg:row-span-3 lg:mt-0">
-                <p className="text-2xl tracking-tight [#000000]">
+                <p className="text-xl tracking-tight text-[#000000]">
                   {product.price} Gs.
                 </p>
               </div>
 
               <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
                 <div>
-                  <h3 className="text-sm font-medium text-gray-900">
+                  <h3 className="text-xl font-medium text-[#000000]">
                     Descripción
                   </h3>
                   <div className="space-y-6">
-                    <p className="text-base text-gray-900">
+                    <p className="text-sm text-[#000000]">
                       {product.description}
                     </p>
                   </div>
@@ -140,11 +140,11 @@ export default function ProductDetails() {
               {isAdmin && (
                 <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
                   <div>
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-xl font-medium text-[#000000]">
                       Unidades
                     </h3>
                     <div className="space-y-6">
-                      <p className="text-base text-gray-900">
+                      <p className="text-sm text-[#000000]">
                         {product.quantity}
                       </p>
                     </div>
@@ -154,8 +154,8 @@ export default function ProductDetails() {
 
               {product.color && (
                 <div>
-                  {/* Ejemplo de referencia https://tailwindui.com/components/ecommerce/components/product-overviews */}
-                  <h3 className="text-sm font-medium text-gray-900">Color</h3>
+                
+                  <h3 className="text-xl font-medium text-[#000000]">Color</h3>
                   <fieldset aria-label="Choose a color" className="mt-4">
                     <RadioGroup
                       value={product.color}
@@ -186,7 +186,7 @@ export default function ProductDetails() {
               {product.size && (
                 <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-xl font-medium text-[#000000]">
                       Tamaño
                     </h3>
                   </div>
@@ -202,7 +202,7 @@ export default function ProductDetails() {
                           value={size.name}
                           className={`${
                             size.name === product.size ? size.selectedClass : ""
-                          } group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none data-[focus]:ring-2 data-[focus]:ring-indigo-500 sm:flex-1 sm:py-6`}
+                          } group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase bg-white focus:outline-none data-[focus]:ring-2 data-[focus]:ring-indigo-500 sm:flex-1 sm:py-6`}
                         >
                           <span>{size.name}</span>
                         </Radio>

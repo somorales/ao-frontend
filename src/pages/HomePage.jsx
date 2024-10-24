@@ -83,7 +83,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="bg-ao">
+    <div className="bg-[#EDE9D8]">
       <div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
         <AoCarousel />
         <AoQuote />

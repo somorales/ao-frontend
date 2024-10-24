@@ -66,7 +66,7 @@ export default function KitDetails() {
   };
 
   return (
-    <div className="bg-ao">
+    <div className="bg-[#EDE9D8]">
       <Loading isLoading={isLoading}>
         <div className="lg:py-6">
           <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -79,23 +79,23 @@ export default function KitDetails() {
             </div>
             <div className="p-6">
               <div className="lg:col-span-2 lg:pr-8">
-                <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                <h1 className="text-2xl font-bold tracking-tight text-[#000000] sm:text-3xl">
                   {kit.name}
                 </h1>
               </div>
               <div className="mt-4 lg:row-span-3 lg:mt-0">
-                <p className="text-2xl tracking-tight text-gray-900">
+                <p className="text-xl tracking-tight text-[#000000]">
                   {kit.price} Gs.
                 </p>
               </div>
 
               <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
                 <div>
-                  <h3 className="text-sm font-medium text-gray-900">
+                  <h3 className="text-lg font-medium text-[#000000]">
                     Description
                   </h3>
                   <div className="space-y-6">
-                    <p className="text-base text-gray-900">{kit.description}</p>
+                    <p className="text-sm text-gray-900">{kit.description}</p>
                   </div>
                 </div>
               </div>
@@ -103,11 +103,11 @@ export default function KitDetails() {
               {isAdmin && (
                 <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
                   <div>
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-lg font-medium text-[#000000]">
                       Unidades
                     </h3>
                     <div className="space-y-6">
-                      <p className="text-base text-gray-900">{kit.quantity}</p>
+                      <p className="text-sm text-gray-900">{kit.quantity}</p>
                     </div>
                   </div>
                 </div>
@@ -115,12 +115,12 @@ export default function KitDetails() {
 
               <div className="py-6 lg:pb-6 lg:pr-8 lg:pt-6">
                 <div>
-                  <h3 className="text-sm font-medium text-gray-900">
+                  <h3 className="text-lg font-medium text-[#000000]">
                     Productos
                   </h3>
                   {kit.products.map((eachProduct) => (
-                    <div key={eachProduct._id} className="space-y-6">
-                      <p className="text-base text-gray-900">
+                    <div key={eachProduct._id} className="space-y-2">
+                      <p className="text-sm text-gray-900">
                         {eachProduct.name}
                       </p>
                       <img
@@ -134,16 +134,17 @@ export default function KitDetails() {
               </div>
 
               {isAdmin && (
-                <Link to={`/admin/kits/${kit._id}/edit`}>
-                  <button className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                 <button
+                 onClick={() => navigate(`/admin/kits/${kit._id}/edit`)}
+                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#c07c53] px-8 py-3 text-base font-semibold text-[#efe8db] hover:bg-[#D68C60] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
+                 >
                     Editar
                   </button>
-                </Link>
               )}
               {isAdmin && (
                 <button
                   onClick={handleDelete}
-                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#d2ccb4] px-8 py-3 text-base font-medium text-[#000000] hover:bg-[#a7a59d] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
                 >
                   Borrar
                 </button>
@@ -152,12 +153,12 @@ export default function KitDetails() {
               {!isAdmin && (
                 <button
                   onClick={handleAdd}
-                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#c07c53] px-8 py-3 text-base font-semibold text-[#efe8db] hover:bg-[#D68C60] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
                 >
                   favoritos
                   <HeartIcon
                     aria-hidden="true"
-                    className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                    className="h-6 w-6 flex-shrink-0 text-[#efe8db] group-hover:text-gray-500"
                   />
                 </button>
               )}
