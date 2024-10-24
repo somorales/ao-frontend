@@ -38,7 +38,7 @@ export default function NavBar() {
         aria-label="Global"
         className="mx-auto max-w-container px-4 sm:px-6 lg:px-36"
       >
-        <div className="hidden relative flex items-center py-[2.125rem]">
+        <div className="hidden lg:flex relative flex items-center py-[2.125rem]">
           <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5"></div>
           <div className="flex-none text-slate-900">
             <div className="h-6 w-auto">
