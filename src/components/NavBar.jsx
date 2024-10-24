@@ -10,6 +10,7 @@ import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import { Navbar } from "flowbite-react";
 
 export default function NavBar() {
   const location = useLocation();
@@ -37,7 +38,7 @@ export default function NavBar() {
         aria-label="Global"
         className="mx-auto max-w-container px-4 sm:px-6 lg:px-36"
       >
-        <div className="relative flex items-center py-[2.125rem]">
+        <div className="hidden relative flex items-center py-[2.125rem]">
           <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5"></div>
           <div className="flex-none text-slate-900">
             <div className="h-6 w-auto">
@@ -54,13 +55,19 @@ export default function NavBar() {
                 <a
                   href="/admin/products"
                   className={`${
-                    location.pathname === "/admin/products" ? "text-[#c07c53] border-b-2 border-[#c07c53]" : ""
+                    location.pathname === "/admin/products"
+                      ? "text-[#c07c53] border-b-2 border-[#c07c53]"
+                      : "hover:text-[#c07c53]"
                   }`}
                 >
                   Productos
                 </a>
                 <a
-                  className={`ml-8 ${location.pathname === "/admin/kits" ? "text-[#c07c53] border-b-2 border-[#c07c53]" : ""}`}
+                  className={`ml-8 ${
+                    location.pathname === "/admin/kits"
+                      ? "text-[#c07c53] border-b-2 border-[#c07c53]"
+                      : "hover:text-[#c07c53]"
+                  }`}
                   href="/admin/kits"
                 >
                   Combos
@@ -72,7 +79,14 @@ export default function NavBar() {
           <div className="ml-auto hidden lg:flex lg:items-center">
             {!isAdmin && (
               <>
-                <a href="/about" className={`w-20 text-center  ${location.pathname === "/about" ? "text-[#c07c53] border-b-2 border-[#c07c53]" :""} `}>
+                <a
+                  href="/about"
+                  className={`w-20 text-center  ${
+                    location.pathname === "/about"
+                      ? "text-[#c07c53] border-b-2 border-[#c07c53]"
+                      : "hover:text-[#c07c53]"
+                  } `}
+                >
                   Sobre AO
                 </a>
               </>
@@ -91,6 +105,7 @@ export default function NavBar() {
               ></path>
             </svg>
           </button>
+
           <div className="hidden lg:ml-4 lg:flex lg:items-center lg:border-l lg:border-slate-900/15">
             {isAdmin && (
               <Menu as="div" className="relative ml-3">
@@ -141,11 +156,11 @@ export default function NavBar() {
 
             {isLoggedIn && (
               <Menu as="div" className="relative ml-3">
-                <div>
+                <div className="group">
                   <MenuButton className="-my-1 ml-auto flex h-8 w-8 items-center justify-center rounded-lg lg:ml-4">
                     <span className="absolute -inset-1.5" />
                     <span className="sr-only">Open user menu</span>
-                    <UserCircleIcon className="h-8 w-8 flex-shrink-0 text-[#2a3a2d] font-semibold group-hover:text-gray-500" />
+                    <UserCircleIcon className="h-8 w-8 flex-shrink-0 text-[#2a3a2d] font-semibold group-hover:text-[#c07c53]" />
                   </MenuButton>
                 </div>
                 <MenuItems
@@ -180,13 +195,56 @@ export default function NavBar() {
                 >
                   <HeartIcon
                     aria-hidden="true"
-                    className={`h-8 w-8 flex-shrink-0 text-[#2a3a2d] group-hover:text-gray-500 ${location.pathname === "/favorites" ? "text-[#c07c53] border-b-2 border-[#c07c53]" : ""}`}
+                    className={`h-8 w-8 flex-shrink-0 text-[#2a3a2d] group-hover:text-gray-500 ${
+                      location.pathname === "/favorites"
+                        ? "text-[#c07c53] border-b-2 border-[#c07c53]"
+                        : "hover:text-[#c07c53]"
+                    }`}
                   />
                 </button>
               </Link>
             )}
           </div>
         </div>
+
+        <Navbar fluid rounded className="bg-ao lg:hidden mt-6">
+          <Navbar.Brand href="/">
+            <img src={aoLogo} className="mr-3 h-8 w-auto sm:h-9" />
+          </Navbar.Brand>
+          <Navbar.Toggle className="bg-ao text-[#c07c53] hover:bg-ao focus:bg-[#EDE9D8]" />
+          <Navbar.Collapse className="bg-white hover:bg-ao rounded-lg text-sm px-2.5 py-2.5">
+            {isAdmin && (
+              <>
+                <Navbar.Link
+                  href="/admin/products"
+                  className={location.pathname === "/admin/products" ? `bg-[#c07c53] text-[#EDE9D8]` : ""}
+                >
+                  Productos
+                </Navbar.Link>
+                <Navbar.Link href="/admin/products/create" className={location.pathname === "/admin/products/create" ? `bg-[#c07c53] text-[#EDE9D8]` : ""}>
+                  Crear Producto
+                </Navbar.Link>
+                <Navbar.Link href="/admin/kits" className={location.pathname === "/admin/kits" ? `bg-[#c07c53] text-[#EDE9D8]` : ""}>Combos</Navbar.Link>
+                <Navbar.Link href="/admin/kits/create" className={location.pathname === "/admin/kits/create" ? `bg-[#c07c53] text-[#EDE9D8]` : ""}>Crear Combo</Navbar.Link>
+              </>
+            )}
+
+            {!isAdmin && (
+              <>
+                <Navbar.Link href="/favorites" className={location.pathname === "/favorites" ? `bg-[#c07c53] text-[#EDE9D8]` : ""}>Favoritos</Navbar.Link>
+                <Navbar.Link href="/about" className={location.pathname === "/about" ? `bg-[#c07c53] text-[#EDE9D8]` : ""}>Sobre AO</Navbar.Link>
+              </>
+            )}
+
+            {!isLoggedIn && (
+              <Navbar.Link href="/login" className={location.pathname === "/login" ? `bg-[#c07c53] text-[#EDE9D8]` : ""}>Iniciar Sesión</Navbar.Link>
+            )}
+
+            {isLoggedIn && (
+              <Navbar.Link onClick={handleLogout}>Cerrar Sesión</Navbar.Link>
+            )}
+          </Navbar.Collapse>
+        </Navbar>
       </nav>
     </header>
   );
