@@ -4,6 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Fabfelt Script";
+  src: url("./assets/fonts/FabfeltScript.otf");
+}
+
+@font-face {
+  font-family: "Parker";
+  src: url("./assets/fonts/Parker.ttf");
+}
+
 
 
 
