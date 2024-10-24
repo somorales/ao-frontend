@@ -7,12 +7,12 @@ import {
 } from "@heroicons/react/24/outline";
 import aoLogo from "../assets/images/ao-logo.png";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
-  const [open, setOpen] = useState(false);
+  const location = useLocation();
   const { isLoggedIn, isAdmin, authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -51,8 +51,18 @@ export default function NavBar() {
           <div className="hidden lg:flex lg:justify-end lg:w-full">
             {isAdmin && (
               <>
-                <a href="/admin/products">Productos</a>
-                <a className="ml-8" href="/admin/kits">
+                <a
+                  href="/admin/products"
+                  className={`${
+                    location.pathname === "/admin/products" ? "text-[#c07c53] border-b-2 border-[#c07c53]" : ""
+                  }`}
+                >
+                  Productos
+                </a>
+                <a
+                  className={`ml-8 ${location.pathname === "/admin/kits" ? "text-[#c07c53] border-b-2 border-[#c07c53]" : ""}`}
+                  href="/admin/kits"
+                >
                   Combos
                 </a>
               </>
@@ -62,7 +72,9 @@ export default function NavBar() {
           <div className="ml-auto hidden lg:flex lg:items-center">
             {!isAdmin && (
               <>
-                <a href="/about" className="w-20 text-center">Sobre AO</a>
+                <a href="/about" className={`w-20 text-center  ${location.pathname === "/about" ? "text-[#c07c53] border-b-2 border-[#c07c53]" :""} `}>
+                  Sobre AO
+                </a>
               </>
             )}
           </div>
@@ -122,7 +134,7 @@ export default function NavBar() {
               >
                 <UserCircleIcon
                   aria-hidden="true"
-                  className="h-8 w-8 flex-shrink-0 text-[#2a3a2d] group-hover:text-gray-500"
+                  className="h-8 w-8 flex-shrink-0 text-[#2a3a2d]  group-hover:text-[#D68C60]"
                 />
               </button>
             )}
@@ -168,7 +180,7 @@ export default function NavBar() {
                 >
                   <HeartIcon
                     aria-hidden="true"
-                    className="h-8 w-8 flex-shrink-0 text-[#2a3a2d] group-hover:text-gray-500"
+                    className={`h-8 w-8 flex-shrink-0 text-[#2a3a2d] group-hover:text-gray-500 ${location.pathname === "/favorites" ? "text-[#c07c53] border-b-2 border-[#c07c53]" : ""}`}
                   />
                 </button>
               </Link>

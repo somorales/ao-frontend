@@ -84,7 +84,7 @@ export default function KitDetails() {
                 </h1>
               </div>
               <div className="mt-4 lg:row-span-3 lg:mt-0">
-                <p className="text-xl tracking-tight text-[#000000]">
+                <p className="text-2xl tracking-tight text-[#000000]">
                   {kit.price} Gs.
                 </p>
               </div>
@@ -144,7 +144,7 @@ export default function KitDetails() {
               {isAdmin && (
                 <button
                   onClick={handleDelete}
-                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#d2ccb4] px-8 py-3 text-base font-medium text-[#000000] hover:bg-[#a7a59d] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
+                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent  px-8 py-3 text-base font-medium text-[#c07c53] hover:bg-[#d2ccb4] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
                 >
                   Borrar
                 </button>

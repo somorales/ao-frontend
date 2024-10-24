@@ -382,7 +382,7 @@ export default function EditProduct() {
 
               <button
                 onClick={() => navigate("/admin/products")}
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#d2ccb4] px-8 py-3 text-base font-medium text-[#000000] hover:bg-[#a7a59d] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent  px-8 py-3 text-base font-medium text-[#c07c53] hover:bg-[#d2ccb4] focus:outline-none focus:ring-2 focus:ring-[#c07c53] focus:ring-offset-2"
               >
                 Cancelar
               </button>
