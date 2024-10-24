@@ -10,7 +10,7 @@ function PrivateUser(props) {
   if (isLoggedIn) {
     return props.children 
   } else {
-    return <Navigate to={"/login"}/>
+    return <Navigate to={"/login"} replace={true} />
   }
 
 }

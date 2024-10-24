@@ -11,6 +11,7 @@ service.interceptors.request.use((config) => {
   if (storedToken) {
     config.headers.authorization = `Bearer ${storedToken}`
   }
+  config.headers["Cache-Control"] = "no-cache"
 
   return config
 
