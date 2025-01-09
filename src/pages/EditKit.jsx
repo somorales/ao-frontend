@@ -73,27 +73,25 @@ export default function EditKit() {
   };
 
   const handleImageChange = async (evento) => {
-    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    
 
     if (!evento.target.files[0]) {
-      // to prevent accidentally clicking the choose file button and not selecting a file
+      
       return;
     }
 
-    setIsUploading(true); // to start the loading animation
+    setIsUploading(true); 
 
-    const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
+    const uploadData = new FormData(); 
     uploadData.append("image", evento.target.files[0]);
-    //                   |
-    //     this name needs to match the name used in the middleware in the backend => uploader.single("image")
+   
 
     try {
       const response = await service.post("/upload", uploadData);
       setImage(response.data.imageUrl);
-      //                          |
-      //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
+     
 
-      setIsUploading(false); // to stop the loading animation
+      setIsUploading(false); 
     } catch (error) {
       setErrorMessage(
         "Ocurrió un error al subir la imagen. Por favor, intenta nuevamente."
@@ -116,15 +114,15 @@ export default function EditKit() {
     const productoExiste = copy.includes(producto._id);
 
     if (productoExiste) {
-      // eliminar
+    
       const index = copy.indexOf(producto._id);
       copy.splice(index, 1);
     } else {
-      // agregar
+      
       copy.push(producto._id);
     }
 
-    // actualizar productos seleccionados
+   
     setSelectedProducts(copy);
   };
 
