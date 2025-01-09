@@ -4,7 +4,7 @@
 
 ## [See the App!](https://ao-py.netlify.app)
 
-!![ao Logo](../images/ao-logo.png)
+!![ao Logo]("../assets/images/ao-logo.png")
 
 ## Description
 
@@ -24,13 +24,27 @@ Inventory management for the Paraguayan store AO. Admin users can manage product
 - **Deployment:** Netlify (Frontend), Render & Mongo Atlas
  (Backend)
 
-## Backlog Functionalities
+## Backlog Functionalities Administrator
 
-- **Category Filters:** Add filtering options by category (Eat & Drink, Experiences, Hidden Places).
-- **Add to Favorites:** Allow users to save recommendations to "My Trips," which are suggestions kept for future visits to a destination.
-- **User’s Recommendations Section:** Create a section where users can view recommendations they have published.
-- **Favorite Recommendations by City:** Add filtering functionality to display favorite recommendations based on the selected city.
-- **Delete Recommendations:** Allow users to delete recommendations they no longer want to share.
+- **Category Filters:** Add filtering options by category (Product and kits).
+
+**Product:** 
+-View all products
+-Create product
+-Delete product
+-Edit product
+-View a product
+**Kits:**
+-View all kits
+-Create a new kit
+-Delete a kit
+-Edit a kit
+-View a kit
+-View product details of a kit
+
+## Backlog Functionalities customer
+
+
 
 # Client Structure
 
@@ -61,6 +75,7 @@ Inventory management for the Paraguayan store AO. Admin users can manage product
 - **Navbar:** Navigation bar with links to the main sections of the app (home,about us, favorites).
 
 ## Links
+
 
 ### Project
 
