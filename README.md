@@ -4,7 +4,7 @@
 
 ## [See the App!](https://ao-py.netlify.app)
 
-!![Game Logo](./images/ao-logo.png)
+!![ao Logo](../images/ao-logo.png)
 
 ## Description
 
@@ -61,11 +61,6 @@ Inventory management for the Paraguayan store AO. Admin users can manage product
 - **Navbar:** Navigation bar with links to the main sections of the app (home,about us, favorites).
 
 ## Links
-
-### Collaborators
-
-
-[Sofia Morales](https://github.com/somorales)
 
 ### Project
 
