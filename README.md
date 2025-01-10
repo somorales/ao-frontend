@@ -1,10 +1,8 @@
-# React + Vite
-
 # AOpy
 
 ## [See the App!](https://ao-py.netlify.app)
 
-!![ao Logo]("../assets/images/ao-logo.png")
+![ao Logo](./src/assets/images/ao-logo.png)
 
 ## Description
 
@@ -19,22 +17,20 @@ Inventory management for the Paraguayan store AO. Admin users can manage product
 - **Frontend:** React, HTML5, CSS3, JavaScript
 - **Backend:** Node.js
 - **Styling:** Tailwind
-- **API Integration:** Axios
-- **Version Control:** GitHub
-- **Deployment:** Netlify (Frontend), Render & Mongo Atlas
- (Backend)
+- **HTTP client:** Axios
+- **Deployment:** Netlify (Frontend), Render & Mongo Atlas (Backend)
 
-## Backlog Functionalities Administrator
+## Features for administrators
 
 - **Category Filters:** Add filtering options by category (Product and kits).
 
-**Product:** 
+- **Product:** 
 -View all products
 -Create product
 -Delete product
 -Edit product
 -View a product
-**Kits:**
+- **Kits:**
 -View all kits
 -Create a new kit
 -Delete a kit
@@ -42,33 +38,37 @@ Inventory management for the Paraguayan store AO. Admin users can manage product
 -View a kit
 -View product details of a kit
 
-## Backlog Functionalities customer
 
+## Features for customers
 
+- **Category Filters:** Add filtering options by product
+- **Favorites:** Add kits and products to a list of favorites
 
 # Client Structure
 
 ## User Stories
 
-- **404** - As a user, I want to see a 404 page when I try to access a page that doesn't exist so I know I made a mistake.
-- **homepage** - As a user, I want to be able to access the homepage to understand what the app is about and filter recommendations by city..
-- **create story** - As a user, I want to create a new travel story to share my experiences with others.
-- **edit story** - As a user, I want to be able to edit a previously created story to fix mistakes or add more information.
-- **delete story** - As a user, I want to delete a story that I no longer want to share.
-- **view stories** - As a user, I want to see a list of all travel stories published by other users.
+404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
+homepage - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
+sign up - As a user I want to sign up on the webpage so that I can see all the events that I could attend
+login - As a user I want to be able to log in on the webpage so that I can get back to my account
+logout - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
+favoritespage - The user can view all their favorite products.
+aboutpage- The user can view about the company.
+productspage- The administrator can view the list of products.
+productdetailspage- The administrator can view the details of a product.
+producteditpage- The administrator can edit the information of an existing product.
+productcreatepage- The administrator can create a new product.
+kitspage-  The administrator can view the list of kits.
+kitdetailspage- The administrator can view the details of a Kit.
+kiteditpage- The administrator can edit the information of an existing kit.
+kitcreatepage- The administrator can create a new kit.
+
+
 
 ## Client Routes
 
-| Path                                                    | Page                  | Components         | Behavior                                                    |
-| ------------------------------------------------------- | --------------------- | ------------------ | ----------------------------------------------------------- |
-| `/`                                                     | HomePage              | Navbar, Footer     | Home page with general information about the app and cities |
-| `/:city`                                                | CityRecommendations   | CityCard, Favs     | Displays recommendations for the selected city              |
-| `/:city/:cityId/recommendations/:recommendationId`      | RecommendationDetails | RecommendationCard | Detailed view of a specific recommendation                  |
-| `/create`                                               | CreateRecommendation  | RecommendationForm | Form to create a new travel recommendation                  |
-| `/about`                                                | About                 | InfoSection        | Page with information about the app and its purpose         |
-| `/:city/:cityId/recommendations/:recommendationId/edit` | EditRecommendation    | EditForm           | Form to edit an existing recommendation                     |
-| `/favs`                                                 | Favs                  | FavsCard           | Displays recommendations marked as favorites                |
-| `*`                                                     | Error                 | ErrorPage          | Error page when the route doesn't exist                     |
+
 
 ## Other Components
 
