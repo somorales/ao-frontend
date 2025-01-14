@@ -68,8 +68,6 @@ Inventory management for the Paraguayan store AO. Admin users can manage product
 
 ## Client Routes
 
-# React Router Routes (React App)
-
 | Path                              | Page              | Components        | Permissions      | Behavior                                   |
 |-----------------------------------|-------------------|-------------------|------------------|--------------------------------------------|
 | /                                 | Home              | HomePage          | public           | Home page                                  |
