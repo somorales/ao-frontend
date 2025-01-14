@@ -48,25 +48,45 @@ Inventory management for the Paraguayan store AO. Admin users can manage product
 
 ## User Stories
 
-404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
-homepage - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
-sign up - As a user I want to sign up on the webpage so that I can see all the events that I could attend
-login - As a user I want to be able to log in on the webpage so that I can get back to my account
-logout - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
-favoritespage - The user can view all their favorite products.
-aboutpage- The user can view about the company.
-productspage- The administrator can view the list of products.
-productdetailspage- The administrator can view the details of a product.
-producteditpage- The administrator can edit the information of an existing product.
-productcreatepage- The administrator can create a new product.
-kitspage-  The administrator can view the list of kits.
-kitdetailspage- The administrator can view the details of a Kit.
-kiteditpage- The administrator can edit the information of an existing kit.
-kitcreatepage- The administrator can create a new kit.
+- 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
+- homepage - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
+- sign up - As a user I want to sign up on the webpage so that I can see all the events that I could attend
+- login - As a user I want to be able to log in on the webpage so that I can get back to my account
+- logout - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
+- favoritespage - The user can view all their favorite products.
+- aboutpage- The user can view about the company.
+- productspage- The administrator can view the list of products.
+- productdetailspage- The administrator can view the details of a product.
+- producteditpage- The administrator can edit the information of an existing product.
+- productcreatepage- The administrator can create a new product.
+- kitspage-  The administrator can view the list of kits.
+- kitdetailspage- The administrator can view the details of a Kit.
+- kiteditpage- The administrator can edit the information of an existing kit.
+- kitcreatepage- The administrator can create a new kit.
 
 
 
 ## Client Routes
+
+# React Router Routes (React App)
+
+| Path                              | Page              | Components        | Permissions      | Behavior                                   |
+|-----------------------------------|-------------------|-------------------|------------------|--------------------------------------------|
+| /                                 | Home              | HomePage          | public           | Home page                                  |
+| /about                            | About             | AboutPage         | public           | About page                                 |
+| /login                            | Login             | LoginPage         | anon only `<IsAnon>` | Login form, link to signup, navigate to homepage after login |
+| /signup                           | Signup            | Signup            | anon only `<IsAnon>` | Signup form, link to login, navigate to homepage after signup |
+| /favorites                        | Favorites         | FavoritesPage     | user only `<PrivateUser>` | Shows user's favorite items               |
+| /products/:productId              | ProductDetails    | ProductDetails    | public           | Shows product details                     |
+| /kits/:kitId                      | KitDetails        | KitDetails        | public           | Shows kit details                         |
+| /admin/products                   | Products          | ProductsPage      | admin only `<PrivateAdmin>` | Shows all products in admin dashboard    |
+| /admin/products/create            | CreateProduct     | ProductCreate     | admin only `<PrivateAdmin>` | Create a new product                      |
+| /admin/products/:productId        | ProductDetails    | ProductDetails    | admin only `<PrivateAdmin>` | Shows details of a specific product       |
+| /admin/products/:productId/edit   | EditProduct       | EditProduct       | admin only `<PrivateAdmin>` | Edit an existing product                  |
+| /admin/kits                       | Kits              | KitsPage          | admin only `<PrivateAdmin>` | Shows all kits in admin dashboard         |
+| /admin/kits/create                | CreateKit         | KitCreate         | admin only `<PrivateAdmin>` | Create a new kit                          |
+| /admin/kits/:kitId                | KitDetails        | KitDetails        | admin only `<PrivateAdmin>` | Shows details of a specific kit           |
+| /admin/kits/:kitId/edit           | EditKit           | EditKit           | admin only `<PrivateAdmin>` | Edit an existing kit                      |
 
 
 
